@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Silver Chain Product Image</title>
+  <link rel="stylesheet" href="product-image-zoom.css">
+  <style>
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #f4f4f5; font-family: system-ui, sans-serif; }
+    .card { width: min(520px, calc(100vw - 32px)); background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06); }
+    .meta { padding: 16px 20px; }
+    .meta h1 { font-size: 18px; margin: 0 0 4px; }
+    .meta p { margin: 0; color: #71717a; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="pz" data-zoom="2.2">
+      <img class="pz__img" src="chain.webp" alt="925 sterling silver Miami Cuban link chain with lobster clasp" width="1200" height="1200">
+    </div>
+    <div class="meta">
+      <h1>Sterling Silver Cuban Link Chain</h1>
+      <p>925 · Made in Italy — hover the image to inspect the links</p>
+    </div>
+  </div>
+  <script src="product-image-zoom.js"></script>
+</body>
+</html>

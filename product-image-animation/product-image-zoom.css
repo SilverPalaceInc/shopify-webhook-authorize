@@ -1,0 +1,72 @@
+/* Product image: reveal on load, one-time silver sheen, hover-to-inspect zoom. */
+:root {
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.pz {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: #fff;
+}
+
+.pz__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: 0 0;
+  opacity: 0;
+  transform: scale(0.97);
+  transition:
+    opacity 300ms var(--ease-out),
+    transform 300ms var(--ease-out);
+}
+
+.pz.is-loaded .pz__img {
+  opacity: 1;
+  transform: none;
+}
+
+/* Sheen: a soft diagonal highlight that crosses the metal once after reveal. */
+.pz::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 65%
+  );
+  mix-blend-mode: soft-light;
+  transform: translateX(-100%);
+}
+
+.pz.is-loaded::after {
+  animation: pz-sheen 900ms var(--ease-in-out) 250ms 1 both;
+}
+
+@keyframes pz-sheen {
+  to { transform: translateX(100%); }
+}
+
+/* Zoom only where hover is real; touch gets the native pinch/gallery. */
+@media (hover: hover) and (pointer: fine) {
+  .pz { cursor: zoom-in; }
+  .pz.is-zooming .pz__img {
+    /* JS sets transform directly; this transition makes the pan trail the cursor smoothly. */
+    transition: transform 200ms var(--ease-out);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pz__img {
+    transform: none;
+    transition: opacity 200ms ease;
+  }
+  .pz.is-loaded::after { animation: none; }
+  .pz.is-zooming .pz__img { transition: none; }
+}
