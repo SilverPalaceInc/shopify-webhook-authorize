@@ -6,9 +6,14 @@
     const img = root.querySelector('.pz__img');
     if (!img) return;
 
-    const reveal = () => root.classList.add('is-loaded');
-    if (img.complete && img.naturalWidth) reveal();
-    else img.addEventListener('load', reveal, { once: true });
+    const reveal = () => requestAnimationFrame(() => root.classList.add('is-loaded'));
+    if (img.complete && img.naturalWidth) {
+      root.classList.add('is-loaded');
+    } else {
+      root.classList.add('is-armed');
+      img.addEventListener('load', reveal, { once: true });
+      img.addEventListener('error', reveal, { once: true });
+    }
 
     const scale = parseFloat(root.dataset.zoom) || 2;
 

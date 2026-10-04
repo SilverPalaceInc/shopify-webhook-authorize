@@ -17,11 +17,15 @@
   height: 100%;
   object-fit: cover;
   transform-origin: 0 0;
-  opacity: 0;
-  transform: scale(0.97);
   transition:
     opacity 300ms var(--ease-out),
     transform 300ms var(--ease-out);
+}
+
+/* Hidden only once JS is running, so the image never stays invisible without it. */
+.pz.is-armed:not(.is-loaded) .pz__img {
+  opacity: 0;
+  transform: scale(0.97);
 }
 
 .pz.is-loaded .pz__img {
@@ -63,10 +67,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pz__img {
-    transform: none;
-    transition: opacity 200ms ease;
-  }
+  .pz__img { transition: opacity 200ms ease; }
+  .pz.is-armed:not(.is-loaded) .pz__img { transform: none; }
   .pz.is-loaded::after { animation: none; }
   .pz.is-zooming .pz__img { transition: none; }
 }
