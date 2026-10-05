@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Silver Palace | Italian Sterling Cuban Link Chains</title>
+<meta name="description" content="925 sterling silver Miami Cuban link chains, made in Italy. Polished links, lobster clasp, stamped 925.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
+<style>
+  /* Tokens. Cold-luxury palette: silver, smoke, ink. One accent (steel blue), used everywhere accent is needed. */
+  :root {
+    --bg: #f3f4f6;
+    --surface: #fafbfc;
+    --plate: #ffffff;
+    --ink: #15171b;
+    --ink-2: #4a4f58;
+    --ink-3: #6b717b;
+    --line: #dfe2e7;
+    --smoke: #e7e9ed;
+    --accent: #2f5677;
+    --accent-ink: #ffffff;
+    --shadow: 0 1px 2px rgba(30, 40, 55, .06), 0 12px 32px rgba(30, 40, 55, .08);
+    /* Radius rule: interactive controls are full pills, containers are 16px. Nothing else. */
+    --r-card: 16px;
+    --r-pill: 999px;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --max: 1280px;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #101215;
+      --surface: #16191d;
+      --plate: #f4f5f7; /* product photos are shot on white, so they sit on a light plate in both modes */
+      --ink: #eceef1;
+      --ink-2: #b4bac3;
+      --ink-3: #8d949e;
+      --line: #2a2e35;
+      --smoke: #1d2025;
+      --accent: #8fb3d4;
+      --accent-ink: #0f1a24;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 12px 32px rgba(0, 0, 0, .35);
+      color-scheme: dark;
+    }
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, video { display: block; max-width: 100%; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  @media (max-width: 767px) { .wrap { padding: 0 16px; } }
+  .ph { font-size: 1.25em; line-height: 1; vertical-align: -0.15em; }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    height: 48px; padding: 0 24px;
+    border-radius: var(--r-pill);
+    font: 500 15px/1 inherit; font-family: inherit;
+    text-decoration: none; white-space: nowrap; cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform 140ms var(--ease-out), background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn--primary { background: var(--ink); color: var(--bg); }
+  .btn--ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+  @media (hover: hover) and (pointer: fine) {
+    .btn--primary:hover { background: var(--accent); color: var(--accent-ink); }
+    .btn--ghost:hover { border-color: var(--ink-3); }
+    .btn .ph-arrow-right { transition: transform 200ms var(--ease-out); }
+    .btn:hover .ph-arrow-right { transform: translateX(3px); }
+  }
+
+  /* ---------- Nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 20; /* z-scale: nav 20, nothing else layered */
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav__in { height: 68px; display: flex; align-items: center; gap: 32px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: -0.01em; text-decoration: none; font-size: 17px; }
+  .brand__mark {
+    width: 30px; height: 30px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: linear-gradient(145deg, #fdfdfe, #b9bec6 55%, #eef0f3);
+    color: #2a2e35; font-size: 13px; font-weight: 700;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(30,40,55,.2);
+  }
+  .nav__links { display: flex; gap: 28px; margin-left: auto; list-style: none; padding: 0; margin-top: 0; margin-bottom: 0; }
+  .nav__links a { text-decoration: none; color: var(--ink-2); font-size: 15px; transition: color 160ms ease; }
+  .nav__links a:hover { color: var(--ink); }
+  .nav .btn { height: 40px; padding: 0 18px; font-size: 14px; }
+  @media (max-width: 767px) { .nav__links { display: none; } .nav .btn { margin-left: auto; } }
+
+  /* ---------- Hero: asymmetric split ---------- */
+  .hero { padding: 56px 0 72px; }
+  .hero__grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; min-height: calc(100dvh - 68px - 128px); }
+  .hero h1 {
+    font-size: clamp(40px, 4.6vw, 64px);
+    line-height: 1.08; letter-spacing: -0.035em; font-weight: 600;
+    margin: 0 0 22px; max-width: 19ch; padding-bottom: 4px;
+  }
+  .hero h1 em { font-style: italic; font-weight: 500; color: var(--ink-2); }
+  .hero p { font-size: 19px; color: var(--ink-2); max-width: 40ch; margin: 0 0 34px; }
+  .hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero__media {
+    position: relative; aspect-ratio: 1 / 1;
+    border-radius: var(--r-card); overflow: hidden;
+    background: #fff; box-shadow: var(--shadow);
+  }
+  .hero__media video { width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 899px) {
+    .hero { padding: 32px 0 56px; }
+    .hero__grid { grid-template-columns: 1fr; gap: 36px; min-height: 0; }
+  }
+
+  /* Hero entrance: staggered rise. Plays once per visit, 40ms steps. */
+  .rise { animation: rise 700ms var(--ease-out) both; animation-delay: calc(var(--i, 0) * 70ms + 80ms); }
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+  .settle { animation: settle 900ms var(--ease-out) 160ms both; }
+  @keyframes settle { from { opacity: 0; transform: scale(0.97); } }
+
+  /* ---------- Proof row ---------- */
+  .proof { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
+  .proof__in { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .proof__item { display: flex; align-items: center; gap: 12px; padding: 22px 0; font-size: 15px; color: var(--ink-2); }
+  .proof__item .ph { font-size: 22px; color: var(--ink); }
+  @media (max-width: 767px) { .proof__in { grid-template-columns: 1fr 1fr; } .proof__item { padding: 16px 0; font-size: 14px; } }
+
+  /* ---------- Section rhythm ---------- */
+  section { scroll-margin-top: 80px; }
+  .sec { padding: 120px 0; }
+  @media (max-width: 767px) { .sec { padding: 80px 0; } }
+  .h2 { font-size: clamp(32px, 3.8vw, 52px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 600; margin: 0 0 16px; max-width: 18ch; }
+  .lede { font-size: 18px; color: var(--ink-2); max-width: 52ch; margin: 0; }
+  .eyebrow { font-family: "Geist Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 18px; }
+
+  /* Scroll reveal: content fades up as it enters. Motion tells you where the new section starts. */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); transition-delay: calc(var(--i, 0) * 60ms); }
+  .reveal.in { opacity: 1; transform: none; }
+  .no-js .reveal { opacity: 1; transform: none; }
+
+  /* ---------- Look closer: full-width inspectable photo ---------- */
+  .closer__head { margin-bottom: 40px; }
+  .pz {
+    position: relative; overflow: hidden;
+    aspect-ratio: 16 / 8;
+    border-radius: var(--r-card);
+    background: var(--plate);
+  }
+  .pz img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; transform-origin: 0 0; transition: transform 300ms var(--ease-out); }
+  .closer__hint { display: flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 14px; color: var(--ink-3); }
+  @media (hover: hover) and (pointer: fine) {
+    .pz { cursor: zoom-in; }
+    .pz.is-zooming img { transition: transform 200ms var(--ease-out); }
+  }
+  @media (hover: none), (pointer: coarse) { .closer__hint .when-mouse { display: none; } }
+  @media (hover: hover) and (pointer: fine) { .closer__hint .when-touch { display: none; } }
+  @media (max-width: 767px) { .pz { aspect-ratio: 4 / 3; } }
+
+  /* ---------- Bento: 4 items, 4 cells ---------- */
+  .bento { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: auto auto; gap: 16px; margin-top: 48px; }
+  .cell { position: relative; border-radius: var(--r-card); overflow: hidden; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 280px; background: var(--surface); border: 1px solid var(--line); }
+  .cell h3 { font-size: 21px; letter-spacing: -0.015em; line-height: 1.2; margin: 0 0 8px; font-weight: 600; }
+  .cell p { margin: 0; color: var(--ink-2); font-size: 15px; max-width: 34ch; }
+  .cell--photo { grid-row: span 2; padding: 0; background: var(--plate); border: 0; }
+  .cell--photo img { width: 100%; height: 100%; object-fit: cover; object-position: 86% 22%; transform: scale(1.9); transform-origin: 86% 26%; }
+  .cell--photo .cap { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 22px 24px; border-radius: 12px; background: rgba(21,23,27,.86); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); color: #f3f4f6; }
+  .cell--photo .cap p { color: #d6d9de; }
+  .cell--steel { background: radial-gradient(120% 90% at 85% 0%, #dfe3e9 0%, #b9c0c9 45%, #8d96a2 100%); border: 0; color: #15171b; }
+  .cell--steel p { color: #2c3138; }
+  .cell--wide { grid-column: span 2; flex-direction: row; align-items: flex-end; justify-content: space-between; gap: 24px; }
+  .cell--wide .crop { width: 46%; align-self: stretch; margin: -28px -28px -28px 0; background: var(--plate); overflow: hidden; }
+  .cell--wide .crop img { width: 100%; height: 100%; object-fit: cover; object-position: 30% 60%; transform: scale(1.5); }
+  .cell .ph-lg { font-size: 30px; margin-bottom: auto; }
+  @media (max-width: 899px) {
+    .bento { grid-template-columns: 1fr 1fr; }
+    .cell--photo { grid-row: auto; grid-column: span 2; min-height: 360px; }
+    .cell--wide { grid-column: span 2; }
+  }
+  @media (max-width: 599px) {
+    .bento { grid-template-columns: 1fr; }
+    .cell--photo, .cell--wide { grid-column: auto; }
+    .cell--wide { flex-direction: column; align-items: stretch; }
+    .cell--wide .crop { width: auto; height: 180px; margin: -28px -28px 8px; order: -1; }
+  }
+
+  /* ---------- Length picker ---------- */
+  .fit { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
+  .lengths { display: flex; flex-wrap: wrap; gap: 10px; margin: 32px 0 0; padding: 0; list-style: none; }
+  .len {
+    height: 44px; padding: 0 20px; border-radius: var(--r-pill);
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+    font: 500 15px/1 "Geist Mono", ui-monospace, monospace; cursor: pointer;
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 140ms var(--ease-out);
+  }
+  .len:active { transform: scale(0.97); }
+  .len[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  @media (hover: hover) and (pointer: fine) { .len:not([aria-pressed="true"]):hover { border-color: var(--ink-3); } }
+  .fit__card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: 36px; box-shadow: var(--shadow); }
+  .fit__num { font-family: "Geist Mono", ui-monospace, monospace; font-size: 56px; letter-spacing: -0.04em; line-height: 1; margin: 0 0 6px; }
+  .fit__where { font-size: 20px; font-weight: 500; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .fit__card p:last-child { color: var(--ink-2); margin: 0; max-width: 44ch; }
+  .swap { transition: opacity 160ms ease, transform 200ms var(--ease-out); }
+  .swap.out { opacity: 0; transform: translateY(4px); }
+  @media (max-width: 899px) { .fit { grid-template-columns: 1fr; gap: 32px; } }
+
+  /* ---------- Care: accordion ---------- */
+  .care { max-width: 820px; }
+  .qa { border-top: 1px solid var(--line); margin-top: 40px; }
+  details { border-bottom: 1px solid var(--line); }
+  summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    padding: 24px 0; font-size: 19px; font-weight: 500; letter-spacing: -0.01em;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary .ph { transition: transform 240ms var(--ease-out); color: var(--ink-3); }
+  details[open] summary .ph { transform: rotate(45deg); }
+  details p { margin: 0 0 24px; color: var(--ink-2); max-width: 62ch; }
+
+  /* ---------- Closing CTA + signup ---------- */
+  .close {
+    border-radius: var(--r-card); overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;
+    background: var(--surface); border: 1px solid var(--line);
+  }
+  .close__copy { padding: 56px; display: flex; flex-direction: column; justify-content: center; }
+  .close__media { background: var(--plate); min-height: 360px; position: relative; }
+  .close__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%; }
+  .form { margin-top: 36px; display: grid; gap: 8px; max-width: 420px; }
+  .form label { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .form__row { display: flex; gap: 10px; }
+  .form input {
+    flex: 1; min-width: 0; height: 48px; padding: 0 20px; border-radius: var(--r-pill);
+    border: 1px solid var(--ink-3); background: var(--bg); color: var(--ink);
+    font: 16px/1 inherit; font-family: inherit;
+    transition: border-color 160ms ease;
+  }
+  .form input::placeholder { color: var(--ink-3); }
+  .form input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-color: var(--accent); }
+  .form input[aria-invalid="true"] { border-color: #b3261e; }
+  .form__help { font-size: 13px; color: var(--ink-3); margin: 0; min-height: 20px; }
+  .form__help.err { color: #b3261e; }
+  .form__help.ok { color: var(--accent); }
+  @media (prefers-color-scheme: dark) {
+    .form input[aria-invalid="true"] { border-color: #f2b8b5; }
+    .form__help.err { color: #f2b8b5; }
+  }
+  @media (max-width: 899px) {
+    .close { grid-template-columns: 1fr; }
+    .close__copy { padding: 36px 24px; }
+    .close__media { min-height: 260px; order: -1; }
+  }
+  @media (max-width: 479px) { .form__row { flex-direction: column; } .form__row .btn { justify-content: center; } }
+
+  /* ---------- Footer ---------- */
+  footer { padding: 56px 0 48px; color: var(--ink-3); font-size: 14px; }
+  .foot { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 32px; }
+  .foot ul { display: flex; gap: 24px; list-style: none; padding: 0; margin: 0; }
+  .foot a { text-decoration: none; }
+  .foot a:hover { color: var(--ink); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rise, .settle { animation: none; }
+    .reveal { transform: none; transition: opacity 300ms ease; }
+    .pz img, .pz.is-zooming img { transition: none; }
+    .swap { transition: opacity 120ms ease; } .swap.out { transform: none; }
+    .btn, .len { transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease; }
+    .btn:active, .len:active { transform: none; }
+  }
+</style>
+</head>
+<body class="no-js">
+<script>document.body.classList.remove('no-js');</script>
+
+<header class="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="#top" aria-label="Silver Palace home"><span class="brand__mark" aria-hidden="true">SP</span>Silver Palace</a>
+    <ul class="nav__links">
+      <li><a href="#closer">The chain</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#fit">Fit</a></li>
+      <li><a href="#care">Care</a></li>
+    </ul>
+    <a class="btn btn--primary" href="#shop">Shop chains</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <h1 class="rise" style="--i:0">Italian sterling, made to be <em>worn daily.</em></h1>
+        <p class="rise" style="--i:1">Miami Cuban link chains in 925 sterling silver. Polished flat links, a lobster clasp, and the stamp to prove it.</p>
+        <div class="hero__ctas rise" style="--i:2">
+          <a class="btn btn--primary" href="#shop">Shop chains <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+          <a class="btn btn--ghost" href="#closer">See it up close</a>
+        </div>
+      </div>
+      <div class="hero__media settle">
+        <video src="__VID__" poster="__IMG__" autoplay muted loop playsinline preload="auto" aria-label="Silver Cuban link chain catching the light"></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proof row: plain facts, no logos we do not have -->
+  <div class="proof">
+    <div class="wrap proof__in">
+      <div class="proof__item"><i class="ph ph-seal-check" aria-hidden="true"></i>Stamped 925</div>
+      <div class="proof__item"><i class="ph ph-map-pin-line" aria-hidden="true"></i>Made in Italy</div>
+      <div class="proof__item"><i class="ph ph-lock-simple" aria-hidden="true"></i>Lobster clasp</div>
+      <div class="proof__item"><i class="ph ph-sparkle" aria-hidden="true"></i>High-polish finish</div>
+    </div>
+  </div>
+
+  <!-- Look closer: full-bleed inspectable photo -->
+  <section class="sec" id="closer">
+    <div class="wrap">
+      <div class="closer__head reveal">
+        <h2 class="h2">Look closer. Every link sits flat.</h2>
+        <p class="lede">Each link is twisted and pressed so the chain lies flush against you and catches light along its whole length.</p>
+      </div>
+      <div class="pz reveal" data-zoom="2.2" style="--i:1">
+        <img src="__IMG__" alt="Close view of a 925 sterling silver Miami Cuban link chain with its lobster clasp and 925 Italy stamp" width="1200" height="1200" loading="lazy">
+      </div>
+      <p class="closer__hint"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i><span class="when-mouse">Move your cursor over the photo to inspect the links.</span><span class="when-touch">Pinch the photo to inspect the links.</span></p>
+    </div>
+  </section>
+
+  <!-- Details: bento, 4 items -> 4 cells -->
+  <section class="sec" id="details" style="padding-top:0">
+    <div class="wrap">
+      <p class="eyebrow reveal">The details</p>
+      <h2 class="h2 reveal" style="--i:1">Small parts, done properly.</h2>
+      <div class="bento">
+        <article class="cell cell--photo reveal" style="--i:1">
+          <img src="__IMG__" alt="The lobster clasp and 925 Italy stamped end cap" loading="lazy">
+          <div class="cap">
+            <h3>Stamped where you can see it</h3>
+            <p>The end cap carries the 925 and Italy marks, so the metal is never a guess.</p>
+          </div>
+        </article>
+        <article class="cell cell--steel reveal" style="--i:2">
+          <i class="ph ph-lock-simple ph-lg" aria-hidden="true"></i>
+          <h3>A clasp that stays shut</h3>
+          <p>A spring-loaded lobster clasp that snaps closed and stays closed.</p>
+        </article>
+        <article class="cell reveal" style="--i:3">
+          <i class="ph ph-drop ph-lg" aria-hidden="true"></i>
+          <h3>Easy to keep bright</h3>
+          <p>Sterling darkens with air. A polishing cloth brings it back in a minute.</p>
+        </article>
+        <article class="cell cell--wide reveal" style="--i:4">
+          <div>
+            <h3>Polished on every face</h3>
+            <p>The flat tops and rounded edges are finished to a mirror shine before the chain is closed.</p>
+          </div>
+          <div class="crop" aria-hidden="true"><img src="__IMG__" alt="" loading="lazy"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fit: interactive length picker -->
+  <section class="sec" id="fit" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="wrap fit">
+      <div class="reveal">
+        <h2 class="h2">Pick the length that suits you.</h2>
+        <p class="lede">Most people wear a Cuban link between 18 and 24 inches. Tap a length to see where it sits.</p>
+        <ul class="lengths" role="list" aria-label="Chain length">
+          <li><button class="len" type="button" aria-pressed="false" data-len="18">18"</button></li>
+          <li><button class="len" type="button" aria-pressed="false" data-len="20">20"</button></li>
+          <li><button class="len" type="button" aria-pressed="true" data-len="22">22"</button></li>
+          <li><button class="len" type="button" aria-pressed="false" data-len="24">24"</button></li>
+        </ul>
+      </div>
+      <div class="fit__card reveal" style="--i:1" aria-live="polite">
+        <div class="swap" id="fitOut">
+          <p class="fit__num" id="fitNum">22"</p>
+          <p class="fit__where" id="fitWhere">Just below the collarbone</p>
+          <p id="fitNote">The most popular length. Sits over a T-shirt collar and shows through an open shirt.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Care: accordion -->
+  <section class="sec" id="care">
+    <div class="wrap care">
+      <h2 class="h2 reveal">Questions about wear and care.</h2>
+      <div class="qa reveal" style="--i:1">
+        <details open>
+          <summary>Will sterling silver tarnish?<i class="ph ph-plus" aria-hidden="true"></i></summary>
+          <p>Yes, slowly. Sterling reacts with sulfur in the air and turns darker over time. Wearing it often actually slows this down, and a silver polishing cloth removes it.</p>
+        </details>
+        <details>
+          <summary>Can I shower or swim in it?<i class="ph ph-plus" aria-hidden="true"></i></summary>
+          <p>It will not be ruined, but chlorine and salt water speed up tarnish. Take it off for the pool and the beach, and dry it after a shower.</p>
+        </details>
+        <details>
+          <summary>How should I store it?<i class="ph ph-plus" aria-hidden="true"></i></summary>
+          <p>Lay it flat in a closed pouch or box, away from humidity. Keeping it separate from other jewelry stops the links from getting scratched.</p>
+        </details>
+        <details>
+          <summary>What does the 925 stamp mean?<i class="ph ph-plus" aria-hidden="true"></i></summary>
+          <p>It means the metal is 92.5% pure silver, alloyed with copper for strength. That is the legal standard for sterling silver.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA + signup -->
+  <section class="sec" id="shop" style="padding-top:0">
+    <div class="wrap">
+      <div class="close reveal">
+        <div class="close__copy">
+          <h2 class="h2">Find your chain.</h2>
+          <p class="lede">Browse every width and length in the shop, or get an email when new pieces land.</p>
+          <div style="margin-top:28px"><a class="btn btn--primary" href="/collections/all">Shop chains <i class="ph ph-arrow-right" aria-hidden="true"></i></a></div>
+          <form class="form" id="signup" novalidate>
+            <label for="email">Email for new arrivals</label>
+            <div class="form__row">
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="emailHelp" required>
+              <button class="btn btn--ghost" type="submit">Notify me</button>
+            </div>
+            <p class="form__help" id="emailHelp">One email per drop. Unsubscribe anytime.</p>
+          </form>
+        </div>
+        <div class="close__media"><img src="__IMG__" alt="Two strands of a sterling silver Cuban link chain" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top"><span class="brand__mark" aria-hidden="true">SP</span>Silver Palace</a>
+    <ul>
+      <li><a href="#fit">Sizing</a></li>
+      <li><a href="#care">Care</a></li>
+      <li><a href="mailto:info@silverpalaceinc.com">Contact</a></li>
+    </ul>
+    <span>&copy; <span id="yr">2026</span> Silver Palace Inc.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Scroll reveal via IntersectionObserver (no scroll listeners).
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Hero video: respect reduced motion.
+  const vid = document.querySelector('.hero__media video');
+  if (reduce && vid) { vid.removeAttribute('autoplay'); vid.pause(); }
+
+  // Hover-to-inspect zoom (mouse only).
+  const fine = matchMedia('(hover: hover) and (pointer: fine)');
+  document.querySelectorAll('.pz').forEach((root) => {
+    const img = root.querySelector('img');
+    const s = parseFloat(root.dataset.zoom) || 2;
+    const pan = (e) => {
+      const r = root.getBoundingClientRect();
+      const fx = Math.min(Math.max((e.clientX - r.left) / r.width, 0), 1);
+      const fy = Math.min(Math.max((e.clientY - r.top) / r.height, 0), 1);
+      img.style.transform = `translate(${-(s - 1) * fx * r.width}px, ${-(s - 1) * fy * r.height}px) scale(${s})`;
+    };
+    root.addEventListener('pointerenter', (e) => { if (!fine.matches || e.pointerType !== 'mouse') return; root.classList.add('is-zooming'); pan(e); });
+    root.addEventListener('pointermove', (e) => { if (root.classList.contains('is-zooming')) pan(e); });
+    root.addEventListener('pointerleave', () => { root.classList.remove('is-zooming'); img.style.transform = ''; });
+  });
+
+  // Length picker.
+  const fits = {
+    18: ['At the base of the neck', 'Short and close. Sits just above most T-shirt collars, good on a smaller frame.'],
+    20: ['On the collarbone', 'A clean everyday length that rests right on the collarbone.'],
+    22: ['Just below the collarbone', 'The most popular length. Sits over a T-shirt collar and shows through an open shirt.'],
+    24: ['Mid chest', 'Longer and more relaxed. Hangs well over a hoodie or layered with a shorter chain.'],
+  };
+  const out = document.getElementById('fitOut');
+  document.querySelectorAll('.len').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (btn.getAttribute('aria-pressed') === 'true') return;
+      document.querySelectorAll('.len').forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      const n = btn.dataset.len;
+      out.classList.add('out');
+      setTimeout(() => {
+        document.getElementById('fitNum').textContent = n + '"';
+        document.getElementById('fitWhere').textContent = fits[n][0];
+        document.getElementById('fitNote').textContent = fits[n][1];
+        out.classList.remove('out');
+      }, reduce ? 0 : 140);
+    });
+  });
+
+  // Signup: inline validation, success and error states.
+  const form = document.getElementById('signup');
+  const input = document.getElementById('email');
+  const help = document.getElementById('emailHelp');
+  const base = help.textContent;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!input.value.trim() || !input.validity.valid) {
+      input.setAttribute('aria-invalid', 'true');
+      help.className = 'form__help err';
+      help.textContent = 'Enter a valid email address, like name@example.com.';
+      input.focus();
+      return;
+    }
+    input.removeAttribute('aria-invalid');
+    help.className = 'form__help ok';
+    help.textContent = 'You are on the list. We will email you when new pieces land.';
+    form.reset();
+  });
+  input.addEventListener('input', () => {
+    if (input.getAttribute('aria-invalid')) { input.removeAttribute('aria-invalid'); help.className = 'form__help'; help.textContent = base; }
+  });
+})();
+</script>
+</body>
+</html>
