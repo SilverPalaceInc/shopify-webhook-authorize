@@ -175,6 +175,21 @@
   @media (hover: hover) and (pointer: fine) { .closer__hint .when-touch { display: none; } }
   @media (max-width: 767px) { .pz { aspect-ratio: 4 / 3; } }
 
+  /* ---------- Story: pinned text left, photos scroll past on the right ---------- */
+  .story { display: grid; grid-template-columns: 5fr 7fr; gap: 72px; align-items: start; }
+  .story__text { position: sticky; top: 140px; padding-bottom: 40px; }
+  .story__text .btn { margin-top: 32px; }
+  .story__photos { display: grid; gap: 28px; }
+  .story__photo { position: relative; overflow: hidden; border-radius: var(--r-card); background: var(--smoke); aspect-ratio: 4 / 5; }
+  .story__photo:nth-child(2) { aspect-ratio: 1 / 1; width: 82%; margin-left: auto; }
+  .story__photo:nth-child(3) { aspect-ratio: 3 / 4; width: 90%; }
+  .story__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 899px) {
+    .story { grid-template-columns: 1fr; gap: 36px; }
+    .story__text { position: static; padding-bottom: 0; }
+    .story__photo, .story__photo:nth-child(2), .story__photo:nth-child(3) { width: 100%; margin-left: 0; aspect-ratio: 4 / 5; }
+  }
+
   /* ---------- Bento: 4 items, 4 cells ---------- */
   .bento { display: grid; grid-template-columns: 1.3fr 1fr 1fr; grid-template-rows: auto auto; gap: 16px; margin-top: 48px; }
   .cell { position: relative; border-radius: var(--r-card); overflow: hidden; padding: 28px; display: flex; flex-direction: column; justify-content: flex-end; min-height: 280px; background: var(--surface); border: 1px solid var(--line); }
@@ -352,6 +367,23 @@
         <img src="__IMG__" alt="Close view of a 925 sterling silver Miami Cuban link chain with its lobster clasp and 925 Italy stamp" width="1200" height="1200" loading="lazy">
       </div>
       <p class="closer__hint"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i><span class="when-mouse">Move your cursor over the photo to inspect the links.</span><span class="when-touch">Pinch the photo to inspect the links.</span></p>
+    </div>
+  </section>
+
+  <!-- Story: text stays pinned while photos scroll past. Photos are PLACEHOLDER stock (Picsum, grayscale); replace with real lifestyle shots. -->
+  <section class="sec" id="story" style="padding-top:0">
+    <div class="wrap story">
+      <div class="story__text reveal">
+        <h2 class="h2">Built to be worn, not kept in a box.</h2>
+        <p class="lede">Out on the street, at work, under a hoodie. A Cuban link holds its shape and its shine through all of it.</p>
+        <a class="btn btn--primary" href="#shop">Shop chains <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+      </div>
+      <div class="story__photos">
+        <figure class="story__photo reveal" style="margin:0"><img data-speed="0.12" src="__S1__" alt="Placeholder lifestyle photo" loading="lazy"></figure>
+        <figure class="story__photo reveal" style="margin:0"><img data-speed="0.12" src="__S2__" alt="Placeholder lifestyle photo" loading="lazy"></figure>
+        <figure class="story__photo reveal" style="margin:0"><img data-speed="0.12" src="__S3__" alt="Placeholder lifestyle photo" loading="lazy"></figure>
+        <figure class="story__photo reveal" style="margin:0"><img data-speed="0.12" src="__S4__" alt="Placeholder lifestyle photo" loading="lazy"></figure>
+      </div>
     </div>
   </section>
 
