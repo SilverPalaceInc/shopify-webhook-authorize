@@ -278,7 +278,16 @@
   .foot a { text-decoration: none; }
   .foot a:hover { color: var(--ink); }
 
+  /* Lenis smooth scroll (official base styles) */
+  html.lenis, html.lenis body { height: auto; }
+  .lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+  .lenis.lenis-smooth iframe { pointer-events: none; }
+
+  /* Parallax: media drifts slower than the page inside its frame. Scaled up so edges never show. */
+  [data-speed] { will-change: transform; transform: scale(var(--ps, 1.12)); }
+
   @media (prefers-reduced-motion: reduce) {
+    [data-speed] { transform: none; will-change: auto; }
     .rise, .settle { animation: none; }
     .reveal { transform: none; transition: opacity 300ms ease; }
     .pz img, .pz.is-zooming img { transition: none; }
@@ -317,7 +326,7 @@
         </div>
       </div>
       <div class="hero__media settle">
-        <video src="__VID__" poster="__IMG__" autoplay muted loop playsinline preload="auto" aria-label="Silver Cuban link chain catching the light"></video>
+        <video data-speed="0.10" src="__VID__" poster="__IMG__" autoplay muted loop playsinline preload="auto" aria-label="Silver Cuban link chain catching the light"></video>
       </div>
     </div>
   </section>
@@ -445,7 +454,7 @@
             <p class="form__help" id="emailHelp">One email per drop. Unsubscribe anytime.</p>
           </form>
         </div>
-        <div class="close__media"><img src="__IMG__" alt="Two strands of a sterling silver Cuban link chain" loading="lazy"></div>
+        <div class="close__media"><img data-speed="0.14" src="__IMG__" alt="Two strands of a sterling silver Cuban link chain" loading="lazy"></div>
       </div>
     </div>
   </section>
@@ -463,10 +472,32 @@
   </div>
 </footer>
 
+<script>__LENIS__</script>
 <script>
 (function () {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Smooth scroll (Lenis, as on lenis.dev). Wheel and trackpad only: touch keeps native
+  // momentum scrolling, and reduced-motion visitors keep the browser's own scroll.
+  let lenis = null;
+  if (!reduce && window.Lenis) {
+    lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 1, autoRaf: true, anchors: true });
+    window.lenis = lenis;
+  }
+
+  // Parallax, driven by Lenis' own frame loop (no scroll listeners on window).
+  const para = [...document.querySelectorAll('[data-speed]')];
+  const updatePara = () => {
+    const vh = innerHeight;
+    for (const el of para) {
+      const r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < -vh || r.top > vh * 2) continue;
+      const p = (r.top + r.height / 2 - vh / 2) / vh; // -1..1 around viewport centre
+      el.style.transform = `translate3d(0, ${(-p * parseFloat(el.dataset.speed) * r.height).toFixed(1)}px, 0) scale(1.12)`;
+    }
+  };
+  if (lenis && para.length) { lenis.on('scroll', updatePara); updatePara(); }
 
   // Scroll reveal via IntersectionObserver (no scroll listeners).
   const io = new IntersectionObserver((entries) => {
