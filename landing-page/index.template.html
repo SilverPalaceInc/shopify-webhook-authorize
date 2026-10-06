@@ -24,8 +24,8 @@ __FONTS__</style>
   /* Tokens are set per theme by the build (__VARIANT__). Shared, theme-independent tokens: */
   :root {
     /* Radius rule: interactive controls are full pills, containers are 16px. Nothing else. */
-    --r-card: 16px;
-    --r-pill: 999px;
+    --r-card: 4px;
+    --r-pill: 2px;
     --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
     --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
     --max: 1280px;
@@ -55,14 +55,14 @@ __TOKENS__
   /* ---------- Buttons ---------- */
   .btn {
     display: inline-flex; align-items: center; gap: 10px;
-    height: 48px; padding: 0 24px;
+    height: 50px; padding: 0 30px;
     border-radius: var(--r-pill);
-    font: 500 15px/1 inherit; font-family: inherit;
+    font-family: inherit; font-size: 13px; font-weight: 700; line-height: 1; text-transform: uppercase; letter-spacing: .12em;
     text-decoration: none; white-space: nowrap; cursor: pointer;
     border: 1px solid transparent;
     transition: transform 140ms var(--ease-out), background-color 200ms ease, border-color 200ms ease, color 200ms ease;
   }
-  .btn:active { transform: scale(0.97); }
+  .btn:active { transform: translateY(1px); }
   .btn--primary { background: var(--btn); color: var(--btn-ink); }
   .btn--ghost { background: transparent; color: var(--ink); border-color: var(--line); }
   @media (hover: hover) and (pointer: fine) {
@@ -111,12 +111,12 @@ __TOKENS__
   .stage__slide.is-on img { animation: push 9s linear both; }
   @keyframes push { from { transform: scale(1.01); } to { transform: scale(1.05); } }
   .stage__copy { position: relative; z-index: 1; flex: 1; width: 100%; display: flex; flex-direction: column; justify-content: center; padding-top: 64px; padding-bottom: 64px; }
-  .stage__title { font-family: var(--display); font-weight: 800; font-size: clamp(48px, 7vw, 104px); line-height: .96; letter-spacing: -.035em; margin: 0 0 22px; max-width: 9ch; }
-  .stage__accent { color: #ff4d5e; }
+  .stage__title { font-family: var(--display); font-weight: 800; font-size: clamp(44px, 5.6vw, 84px); line-height: .98; letter-spacing: -.01em; text-transform: uppercase; margin: 0 0 20px; max-width: 12ch; }
   .stage__sub { font-size: 18px; line-height: 1.55; color: #c3c8cf; max-width: 38ch; margin: 0 0 32px; }
-  .stage__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-  .stage__ghost { background: transparent; color: #f2f3f5; border-color: rgba(242,243,245,.35); }
-  @media (hover: hover) and (pointer: fine) { .stage__ghost:hover { border-color: #f2f3f5; } }
+  .stage .stage__ctas.w { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; }
+  .stage__cta { background: #f4f5f7; color: #0f1012; }
+  .stage__link { color: #f2f3f5; font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+  @media (hover: hover) and (pointer: fine) { .stage__cta:hover { background: #ffffff; } .stage__link:hover { text-decoration-thickness: 2px; } }
   .stage .w { display: inline-block; animation: wordIn 900ms var(--ease-out) both; animation-delay: calc(var(--i) * 90ms + 150ms); }
   .stage__title .w { will-change: transform; }
   @keyframes wordIn { from { opacity: 0; transform: translate3d(0, .45em, 0); } }
@@ -171,7 +171,7 @@ __TOKENS__
   section { scroll-margin-top: 88px; }
   .sec { padding: 88px 0; }
   @media (max-width: 767px) { .sec { padding: 64px 0; } }
-  .h2 { font-size: clamp(32px, 3.8vw, 52px); line-height: 1.04; letter-spacing: -0.025em; font-weight: 800; margin: 0 0 16px; max-width: 18ch; }
+  .h2 { font-size: clamp(26px, 2.6vw, 36px); line-height: 1.1; letter-spacing: .01em; text-transform: uppercase; font-weight: 800; margin: 0 0 14px; max-width: 24ch; }
   .lede { font-size: 18px; color: var(--ink-2); max-width: 52ch; margin: 0; }
   .eyebrow { font-family: var(--text); font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 18px; }
 
@@ -413,11 +413,11 @@ __TOKENS__
       <div class="stage__slide"><img src="__H_m2__" alt="" width="1400" height="1575"></div>
     </div>
     <div class="wrap stage__copy">
-      <h1 class="stage__title"><span class="w" style="--i:1">Real</span> <span class="w" style="--i:2">sterling.</span><br><span class="w" style="--i:3">Worn</span> <span class="w stage__accent" style="--i:4">daily.</span></h1>
-      <p class="stage__sub w" style="--i:5">Miami Cuban chains and ID bracelets in 925 sterling silver, made to be worn every day.</p>
-      <div class="stage__ctas w" style="--i:6">
-        <a class="btn btn--primary" href="#shop-best">Shop best sellers <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
-        <a class="btn stage__ghost" href="#styles">Shop by style</a>
+      <h1 class="stage__title w" style="--i:1">Miami Cuban links</h1>
+      <p class="stage__sub w" style="--i:2">925 sterling silver chains and bracelets. Made to be worn every day.</p>
+      <div class="stage__ctas w" style="--i:3">
+        <a class="btn stage__cta" href="#shop-best">Shop now</a>
+        <a class="stage__link" href="#styles">Shop bracelets</a>
       </div>
     </div>
   </section>
@@ -436,7 +436,7 @@ __TOKENS__
   <section class="sec" id="shop-best" style="padding-bottom:0">
     <div class="wrap">
       <div class="shelf__head reveal">
-        <h2 class="h2">Best sellers.</h2>
+        <h2 class="h2">Best sellers</h2>
         <a class="textlink" href="/collections/all">Shop all</a>
       </div>
       <div class="products">
@@ -479,9 +479,9 @@ __TOKENS__
   <!-- Shop by style -->
   <section class="sec" id="styles" style="padding-bottom:0">
     <div class="wrap">
-      <h2 class="h2 reveal" style="margin-bottom:28px">Shop by style.</h2>
+      <h2 class="h2 reveal" style="margin-bottom:28px">Shop by style</h2>
       <div class="styles">
-        <a class="style reveal" href="/collections/all"><img src="__P_miami__" alt="" loading="lazy"><span>Miami Cuban chains <i class="ph ph-arrow-right" aria-hidden="true"></i></span></a>
+        <a class="style reveal" href="/collections/all"><img src="__P_miami__" alt="" loading="lazy"><span>Miami Cuban chains</span></a>
         <a class="style reveal" style="--i:1" href="/collections/all"><img src="__P_boxlock__" alt="" loading="lazy"><span>Box lock</span></a>
         <a class="style reveal" style="--i:2" href="/collections/all"><img src="__P_dollar__" alt="" loading="lazy"><span>Diamond cut</span></a>
         <a class="style reveal" style="--i:3" href="/collections/all"><img src="__P_greek__" alt="" loading="lazy"><span>ID bracelets</span></a>
@@ -494,7 +494,7 @@ __TOKENS__
   <section class="sec" id="closer">
     <div class="wrap">
       <div class="closer__head reveal">
-        <h2 class="h2">Look closer. Every link sits flat.</h2>
+        <h2 class="h2">Look closer</h2>
         <p class="lede">Each link is twisted and pressed so the chain lies flush against you and catches light along its whole length.</p>
       </div>
       <div class="pz reveal" data-zoom="2.2" style="--i:1">
@@ -507,8 +507,7 @@ __TOKENS__
   <!-- Details: bento, 4 items -> 4 cells -->
   <section class="sec" id="details" style="padding-top:0">
     <div class="wrap">
-      <p class="eyebrow reveal">The details</p>
-      <h2 class="h2 reveal" style="--i:1">Small parts, done properly.</h2>
+      <h2 class="h2 reveal" style="--i:1">The details</h2>
       <div class="bento">
         <article class="cell cell--photo reveal" style="--i:1">
           <img src="__IMG__" alt="The lobster clasp and 925 Italy stamped end cap" loading="lazy">
@@ -542,7 +541,7 @@ __TOKENS__
   <section class="sec" id="fit" style="background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
     <div class="wrap fit">
       <div class="reveal">
-        <h2 class="h2">Pick the length that suits you.</h2>
+        <h2 class="h2">Find your fit</h2>
         <p class="lede">Most people wear a Cuban link between 18 and 24 inches. Tap a length to see where it sits.</p>
         <ul class="lengths" role="list" aria-label="Chain length">
           <li><button class="len" type="button" aria-pressed="false" data-len="18">18"</button></li>
@@ -564,7 +563,7 @@ __TOKENS__
   <!-- Care: accordion -->
   <section class="sec" id="care">
     <div class="wrap care">
-      <h2 class="h2 reveal">Questions about wear and care.</h2>
+      <h2 class="h2 reveal">Wear and care</h2>
       <div class="qa reveal" style="--i:1">
         <details open>
           <summary>Will sterling silver tarnish?<i class="ph ph-plus" aria-hidden="true"></i></summary>
@@ -592,9 +591,9 @@ __TOKENS__
       <div class="close reveal">
         <div class="close__copy">
           <img class="mascot" src="__MASCOT__" alt="Mr. Cuban Link mascot: a bearded man in a cap, sunglasses and a silver Cuban link chain" width="242" height="256" loading="lazy">
-          <h2 class="h2">Find your chain.</h2>
+          <h2 class="h2">Find your chain</h2>
           <p class="lede">Browse every width and length in the shop, or get an email when new pieces land.</p>
-          <div style="margin-top:28px"><a class="btn btn--primary" href="/collections/all">Shop chains <i class="ph ph-arrow-right" aria-hidden="true"></i></a></div>
+          <div style="margin-top:28px"><a class="btn btn--primary" href="/collections/all">Shop chains</a></div>
           <form class="form" id="signup" novalidate>
             <label for="email">Email for new arrivals</label>
             <div class="form__row">
