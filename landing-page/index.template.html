@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mr. Cuban Link | Italian Sterling Cuban Link Chains</title>
+<link rel="icon" type="image/svg+xml" href="__FAVICON__">
 <meta name="description" content="925 sterling silver Miami Cuban link chains, made in Italy. Polished links, lobster clasp, stamped 925.">
 <script>
   // Theme before first paint: saved choice, else this variant's default.
@@ -79,6 +80,9 @@ __TOKENS__
     border-bottom: 1px solid var(--line);
   }
   .nav__in { height: 68px; display: flex; align-items: center; gap: 32px; }
+  .brand svg { height: 34px; width: auto; display: block; color: var(--ink); }
+  @media (max-width: 767px) { .nav__in { gap: 12px; } .brand svg { height: 24px; } .nav .btn { padding: 0 14px; } }
+  footer .brand svg { height: 24px; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.01em; text-decoration: none; font-size: 17px; }
   .brand__mark {
     width: 30px; height: 30px; border-radius: 50%;
@@ -104,7 +108,7 @@ __TOKENS__
     line-height: 1.04; letter-spacing: -0.03em; font-weight: 800;
     margin: 0 0 22px; max-width: 19ch; padding-bottom: 4px;
   }
-  .hero h1 em { font-style: italic; font-weight: 500; color: var(--ink-2); }
+  .hero h1 em { font-style: normal; color: var(--accent); }
   .hero p { font-size: 19px; color: var(--ink-2); max-width: 40ch; margin: 0 0 34px; }
   .hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
   .hero__media {
@@ -214,7 +218,7 @@ __TOKENS__
     transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 140ms var(--ease-out);
   }
   .len:active { transform: scale(0.97); }
-  .len[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .len[aria-pressed="true"] { background: var(--btn); color: var(--btn-ink); border-color: var(--btn); }
   @media (hover: hover) and (pointer: fine) { .len:not([aria-pressed="true"]):hover { border-color: var(--ink-3); } }
   .fit__card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-card); padding: 36px; }
   .fit__num { font-size: 64px; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: -0.03em; line-height: 1; margin: 0 0 6px; }
@@ -300,7 +304,7 @@ __TOKENS__
 
 <header class="nav">
   <div class="wrap nav__in">
-    <a class="brand" href="#top" aria-label="Mr. Cuban Link home"><span class="brand__mark" aria-hidden="true">MC</span>Mr. Cuban Link</a>
+    <a class="brand" href="#top" aria-label="Mr. Cuban Link home">__LOGO__</a>
     <ul class="nav__links">
       <li><a href="#closer">The chain</a></li>
       <li><a href="#details">Details</a></li>
@@ -478,7 +482,7 @@ __TOKENS__
 
 <footer>
   <div class="wrap foot">
-    <a class="brand" href="#top"><span class="brand__mark" aria-hidden="true">MC</span>Mr. Cuban Link</a>
+    <a class="brand" href="#top" aria-label="Mr. Cuban Link home">__LOGO2__</a>
     <ul>
       <li><a href="#fit">Sizing</a></li>
       <li><a href="#care">Care</a></li>
