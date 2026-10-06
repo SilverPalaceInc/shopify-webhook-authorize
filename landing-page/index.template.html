@@ -273,13 +273,15 @@ __TOKENS__
   }
   @media (max-width: 479px) { .form__row { flex-direction: column; } .form__row .btn { justify-content: center; } }
 
-  /* Mascot lockup logo (light theme). The black lettering disappears on dark, so dark keeps the SVG wordmark. */
-  .brand__img { height: 50px; width: auto; display: block; }
-  footer .brand__img { height: 40px; }
-  .brand__img + svg { display: none; }
-  :root[data-theme="dark"] .brand__img { display: none; }
-  :root[data-theme="dark"] .brand__img + svg { display: block; }
-  @media (max-width: 767px) { .brand__img { height: 40px; } }
+  /* Logo lockup: mascot badge + live wordmark (crisp at any size, follows the theme colour). */
+  .brand { gap: 12px; }
+  .brand__badge { width: 48px; height: 48px; border-radius: 50%; display: block; flex: none; }
+  .brand svg { height: 22px; width: auto; display: block; color: var(--ink); }
+  footer .brand__badge { width: 40px; height: 40px; }
+  footer .brand svg { height: 18px; }
+  @media (max-width: 767px) { .brand { gap: 8px; } .brand__badge { width: 38px; height: 38px; } .brand svg { height: 15px; }
+    /* Phones: the hero's Shop chains button sits right below, so the nav copy makes room for the logo. */
+    .nav .btn--primary { display: none; } }
 
   /* Mascot badge (shown at <=100px; source preview is 200px) */
   .mascot { width: 96px; height: 96px; border-radius: 50%; margin-bottom: 20px; display: block; }
@@ -317,7 +319,7 @@ __TOKENS__
 
 <header class="nav">
   <div class="wrap nav__in">
-    <a class="brand" href="#top" aria-label="Mr. Cuban Link home"><img class="brand__img" src="__LOCKUP__" alt="" width="180" height="73">__LOGO__</a>
+    <a class="brand" href="#top" aria-label="Mr. Cuban Link home"><img class="brand__badge" src="__MASCOT__" alt="" width="48" height="48">__WORD__</a>
     <ul class="nav__links">
       <li><a href="#closer">The chain</a></li>
       <li><a href="#details">Details</a></li>
@@ -496,7 +498,7 @@ __TOKENS__
 
 <footer>
   <div class="wrap foot">
-    <div class="foot__brand"><img class="mascot mascot--sm" src="__MASCOT__" alt="" width="44" height="44" loading="lazy"><a class="brand" href="#top" aria-label="Mr. Cuban Link home"><img class="brand__img" src="__LOCKUP__" alt="" width="180" height="73">__LOGO2__</a></div>
+    <div class="foot__brand"><a class="brand" href="#top" aria-label="Mr. Cuban Link home"><img class="brand__badge" src="__MASCOT__" alt="" width="48" height="48">__WORD__</a></div>
     <ul>
       <li><a href="#fit">Sizing</a></li>
       <li><a href="#care">Care</a></li>
