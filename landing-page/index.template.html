@@ -273,6 +273,11 @@ __TOKENS__
   }
   @media (max-width: 479px) { .form__row { flex-direction: column; } .form__row .btn { justify-content: center; } }
 
+  /* Mascot badge (shown at <=100px; source preview is 200px) */
+  .mascot { width: 96px; height: 96px; border-radius: 50%; margin-bottom: 20px; display: block; }
+  .mascot--sm { width: 44px; height: 44px; margin: 0; }
+  .foot__brand { display: flex; align-items: center; gap: 12px; }
+
   /* ---------- Footer ---------- */
   footer { padding: 56px 0 48px; color: var(--ink-3); font-size: 14px; }
   .foot { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 32px; }
@@ -462,6 +467,7 @@ __TOKENS__
     <div class="wrap">
       <div class="close reveal">
         <div class="close__copy">
+          <img class="mascot" src="__MASCOT__" alt="Mr. Cuban Link mascot: a bearded man in a cap, sunglasses and a silver Cuban link chain" width="96" height="96" loading="lazy">
           <h2 class="h2">Find your chain.</h2>
           <p class="lede">Browse every width and length in the shop, or get an email when new pieces land.</p>
           <div style="margin-top:28px"><a class="btn btn--primary" href="/collections/all">Shop chains <i class="ph ph-arrow-right" aria-hidden="true"></i></a></div>
@@ -482,7 +488,7 @@ __TOKENS__
 
 <footer>
   <div class="wrap foot">
-    <a class="brand" href="#top" aria-label="Mr. Cuban Link home">__LOGO2__</a>
+    <div class="foot__brand"><img class="mascot mascot--sm" src="__MASCOT__" alt="" width="44" height="44" loading="lazy"><a class="brand" href="#top" aria-label="Mr. Cuban Link home">__LOGO2__</a></div>
     <ul>
       <li><a href="#fit">Sizing</a></li>
       <li><a href="#care">Care</a></li>
