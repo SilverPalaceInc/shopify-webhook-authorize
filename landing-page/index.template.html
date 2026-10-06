@@ -102,7 +102,7 @@ __TOKENS__
 
   /* ---------- Hero stage (dark band, real photography) ---------- */
   .stage { position: relative; overflow: hidden; background: #0b0c0e; color: #f2f3f5; min-height: min(760px, calc(100dvh - 112px)); display: flex; flex-direction: column; isolation: isolate; }
-  .stage__media { position: absolute; inset: 0 0 52px 34%; z-index: 0;
+  .stage__media { position: absolute; inset: 0 0 0 34%; z-index: 0;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 28%), linear-gradient(to top, transparent 0%, #000 18%); -webkit-mask-composite: source-in;
             mask-image: linear-gradient(to right, transparent 0%, #000 28%), linear-gradient(to top, transparent 0%, #000 18%); mask-composite: intersect; }
   .stage__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1400ms var(--ease-in-out); }
@@ -116,7 +116,6 @@ __TOKENS__
     transform: translateX(-80%); animation: sweep 6s var(--ease-in-out) 900ms infinite; }
   @keyframes sweep { 0% { transform: translateX(-80%); } 45%, 100% { transform: translateX(80%); } }
   .stage__copy { position: relative; z-index: 1; flex: 1; width: 100%; display: flex; flex-direction: column; justify-content: center; padding-top: 64px; padding-bottom: 64px; }
-  .stage__kicker { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #ff6b77; margin: 0 0 18px; }
   .stage__title { font-family: var(--display); font-weight: 800; font-size: clamp(48px, 7vw, 104px); line-height: .96; letter-spacing: -.035em; margin: 0 0 22px; max-width: 9ch; }
   .stage__accent { color: #ff4d5e; }
   .stage__sub { font-size: 18px; line-height: 1.55; color: #c3c8cf; max-width: 38ch; margin: 0 0 32px; }
@@ -126,19 +125,14 @@ __TOKENS__
   .stage .w { display: inline-block; animation: wordIn 900ms var(--ease-out) both; animation-delay: calc(var(--i) * 90ms + 150ms); }
   .stage__title .w { will-change: transform; }
   @keyframes wordIn { from { opacity: 0; transform: translate3d(0, .45em, 0); } }
-  .stage__ticker { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,.1); height: 52px; overflow: hidden; display: flex; align-items: center; }
-  .stage__track { display: flex; gap: 48px; white-space: nowrap; animation: ticker 38s linear infinite; padding-left: 48px; }
-  .stage__track span { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #8d949e; }
-  .stage__track span:nth-child(odd) { color: #c3c8cf; }
-  @keyframes ticker { to { transform: translateX(-50%); } }
   @media (max-width: 899px) {
     .stage { min-height: 680px; }
-    .stage__media { inset: 0 0 52px 0; -webkit-mask-image: linear-gradient(to top, transparent 30%, #000 70%); mask-image: linear-gradient(to top, transparent 30%, #000 70%); }
+    .stage__media { inset: 0; -webkit-mask-image: linear-gradient(to top, transparent 30%, #000 70%); mask-image: linear-gradient(to top, transparent 30%, #000 70%); }
     .stage__copy { justify-content: flex-end; padding-top: 280px; padding-bottom: 36px; }
     .stage__sub { font-size: 16px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .stage .w, .stage__slide.is-on img, .stage__sweep, .stage__track { animation: none; }
+    .stage .w, .stage__slide.is-on img, .stage__sweep { animation: none; }
     .stage__slide { transition: none; }
   }
 
@@ -425,7 +419,6 @@ __TOKENS__
       <div class="stage__sweep"></div>
     </div>
     <div class="wrap stage__copy">
-      <p class="stage__kicker w" style="--i:0">925 sterling silver</p>
       <h1 class="stage__title"><span class="w" style="--i:1">Built</span> <span class="w" style="--i:2">heavy.</span><br><span class="w" style="--i:3">Worn</span> <span class="w stage__accent" style="--i:4">daily.</span></h1>
       <p class="stage__sub w" style="--i:5">Miami Cuban chains and ID bracelets in 925 sterling silver, made to be worn every day.</p>
       <div class="stage__ctas w" style="--i:6">
@@ -433,10 +426,6 @@ __TOKENS__
         <a class="btn stage__ghost" href="#styles">Shop by style</a>
       </div>
     </div>
-    <div class="stage__ticker" aria-hidden="true"><div class="stage__track">
-      <span>Miami Cuban</span><span>Box lock</span><span>Diamond cut</span><span>ID bracelets</span><span>Figaro</span><span>925 sterling silver</span><span>Italian-made chains</span>
-      <span>Miami Cuban</span><span>Box lock</span><span>Diamond cut</span><span>ID bracelets</span><span>Figaro</span><span>925 sterling silver</span><span>Italian-made chains</span>
-    </div></div>
   </section>
 
   <!-- Proof row: plain facts, no logos we do not have -->
