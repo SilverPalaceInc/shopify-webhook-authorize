@@ -184,11 +184,11 @@ __TOKENS__
   .proof__track { display: flex; width: max-content; animation: proof 42s linear infinite; }
   .proof__run { display: flex; align-items: center; flex: none; }
   .proof__item { font-size: 13px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #f2f3f5; white-space: nowrap; padding: 18px 0; }
-  /* Mascot badge between phrases: one image, reused via CSS */
-  .proof__sep { width: 30px; height: 32px; margin: 0 32px; flex: none; border-radius: 50%; background: url(__MASCOT__) center / contain no-repeat; }
+  .proof__sep { display: grid; place-items: center; margin: 0 32px; flex: none; color: #f2f3f5; }
+  .proof__sep svg { width: 28px; height: 28px; display: block; }
   @keyframes proof { to { transform: translate3d(-50%, 0, 0); } }
   @media (hover: hover) and (pointer: fine) { .proof:hover .proof__track { animation-play-state: paused; } }
-  @media (max-width: 767px) { .proof__item { font-size: 12px; padding: 15px 0; } .proof__sep { width: 26px; height: 28px; margin: 0 22px; } .proof__track { animation-duration: 32s; } }
+  @media (max-width: 767px) { .proof__item { font-size: 12px; padding: 15px 0; } .proof__sep { margin: 0 22px; } .proof__sep svg { width: 24px; height: 24px; } .proof__track { animation-duration: 32s; } }
   @media (prefers-reduced-motion: reduce) { .proof__track { animation: none; } }
 
   /* ---------- Section rhythm ---------- */
@@ -462,8 +462,8 @@ __TOKENS__
   <section class="proof" aria-label="Why Mr. Cuban Link">
     <ul class="sr-only"><li>Stamped 925</li><li>Made in Italy</li><li>925 sterling silver</li><li>Lobster clasp</li><li>High-polish finish</li><li>Miami Cuban links</li></ul>
     <div class="proof__track" aria-hidden="true">
-      <div class="proof__run"><span class="proof__item">Stamped 925</span><span class="proof__sep"></span><span class="proof__item">Made in Italy</span><span class="proof__sep"></span><span class="proof__item">925 sterling silver</span><span class="proof__sep"></span><span class="proof__item">Lobster clasp</span><span class="proof__sep"></span><span class="proof__item">High-polish finish</span><span class="proof__sep"></span><span class="proof__item">Miami Cuban links</span><span class="proof__sep"></span></div>
-      <div class="proof__run"><span class="proof__item">Stamped 925</span><span class="proof__sep"></span><span class="proof__item">Made in Italy</span><span class="proof__sep"></span><span class="proof__item">925 sterling silver</span><span class="proof__sep"></span><span class="proof__item">Lobster clasp</span><span class="proof__sep"></span><span class="proof__item">High-polish finish</span><span class="proof__sep"></span><span class="proof__item">Miami Cuban links</span><span class="proof__sep"></span></div>
+      <div class="proof__run"><span class="proof__item">Stamped 925</span><span class="proof__sep">__SYM__</span><span class="proof__item">Made in Italy</span><span class="proof__sep">__SYM__</span><span class="proof__item">925 sterling silver</span><span class="proof__sep">__SYM__</span><span class="proof__item">Lobster clasp</span><span class="proof__sep">__SYM__</span><span class="proof__item">High-polish finish</span><span class="proof__sep">__SYM__</span><span class="proof__item">Miami Cuban links</span><span class="proof__sep">__SYM__</span></div>
+      <div class="proof__run"><span class="proof__item">Stamped 925</span><span class="proof__sep">__SYM__</span><span class="proof__item">Made in Italy</span><span class="proof__sep">__SYM__</span><span class="proof__item">925 sterling silver</span><span class="proof__sep">__SYM__</span><span class="proof__item">Lobster clasp</span><span class="proof__sep">__SYM__</span><span class="proof__item">High-polish finish</span><span class="proof__sep">__SYM__</span><span class="proof__item">Miami Cuban links</span><span class="proof__sep">__SYM__</span></div>
     </div>
   </section>
 
