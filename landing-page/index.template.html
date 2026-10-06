@@ -80,9 +80,32 @@ __TOKENS__
     -webkit-backdrop-filter: saturate(160%) blur(14px);
     border-bottom: 1px solid var(--line);
   }
-  .nav__in { height: 76px; display: flex; align-items: center; gap: 32px; }
+  /* Header row 1: centered logo, utility icons either side (Adamans/Jaxxon pattern) */
+  .nav__in { height: 76px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; }
+  .nav__side { display: flex; align-items: center; gap: 4px; }
+  .nav__side--end { justify-content: flex-end; }
+  .nav__brand { justify-self: center; }
+  .nav__icon { position: relative; width: 44px; height: 44px; display: grid; place-items: center; color: var(--ink); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: none; border-radius: var(--r-pill); }
+  .nav__icon svg { width: 22px; height: 22px; }
+  @media (hover: hover) and (pointer: fine) { .nav__icon:hover { background: var(--smoke); } }
+  .nav__menu { display: none; }
+  .nav__count { position: absolute; top: 6px; right: 4px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 8px; background: var(--ink); color: var(--bg); font-size: 10px; font-weight: 700; line-height: 16px; text-align: center; }
+  /* Header row 2: category links */
+  .cats { border-top: 1px solid var(--line); }
+  .cats__list { list-style: none; margin: 0 auto; display: flex; justify-content: center; gap: 32px; height: 46px; align-items: center; overflow-x: auto; scrollbar-width: none; }
+  .cats__list::-webkit-scrollbar { display: none; }
+  .cats__list a { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); text-decoration: none; white-space: nowrap; padding: 14px 0; border-bottom: 2px solid transparent; transition: color 160ms ease, border-color 160ms ease; }
+  @media (hover: hover) and (pointer: fine) { .cats__list a:hover { color: var(--ink); border-bottom-color: var(--accent); } }
+  @media (max-width: 899px) { .cats__list { justify-content: flex-start; gap: 24px; } }
+  @media (max-width: 767px) {
+    .nav__in { height: 64px; gap: 8px; }
+    .nav__menu { display: grid; }
+    .nav__icon { width: 40px; height: 40px; }
+    .nav__side > a.nav__icon:not(.nav__cart) { display: none; } /* phones: menu left, cart right */
+    .nav__brand .brand__badge { height: 38px; }
+    .nav__brand svg { height: 15px; }
+  }
   .brand svg { height: 34px; width: auto; display: block; color: var(--ink); }
-  @media (max-width: 767px) { .nav__in { gap: 12px; } .brand svg { height: 24px; } .nav .btn { padding: 0 14px; } }
   footer .brand svg { height: 24px; }
   .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: -0.01em; text-decoration: none; font-size: 17px; }
   .brand__mark {
@@ -92,16 +115,11 @@ __TOKENS__
     color: #2a2e35; font-size: 13px; font-weight: 700;
     box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 1px 2px rgba(30,40,55,.2);
   }
-  .nav__links { display: flex; gap: 28px; margin-left: auto; list-style: none; padding: 0; margin-top: 0; margin-bottom: 0; }
-  .nav__links a { text-decoration: none; color: var(--ink-2); font-size: 15px; transition: color 160ms ease; }
-  .nav__links a:hover { color: var(--ink); }
-  .nav .btn { height: 40px; padding: 0 18px; font-size: 14px; }
-  .theme-toggle { height: 40px; padding: 0 14px; gap: 8px; font-size: 14px; }
-  @media (max-width: 767px) { .theme-toggle { margin-left: auto; padding: 0 12px; } .nav .btn--primary { margin-left: 0; } }
-  @media (max-width: 767px) { .nav__links { display: none; } .nav .btn { margin-left: auto; } }
+  .theme-toggle { height: 36px; padding: 0 14px; gap: 8px; font-size: 11px; }
+  .foot__base { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
 
   /* ---------- Hero stage (dark band, real photography) ---------- */
-  .stage { position: relative; overflow: hidden; background: #0b0c0e; color: #f2f3f5; min-height: min(760px, calc(100dvh - 112px)); display: flex; flex-direction: column; isolation: isolate; }
+  .stage { position: relative; overflow: hidden; background: #0b0c0e; color: #f2f3f5; min-height: min(720px, calc(100dvh - 158px)); display: flex; flex-direction: column; isolation: isolate; }
   .stage__media { position: absolute; inset: 0 0 0 34%; z-index: 0;
     -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 28%), linear-gradient(to top, transparent 0%, #000 18%); -webkit-mask-composite: source-in;
             mask-image: linear-gradient(to right, transparent 0%, #000 28%), linear-gradient(to top, transparent 0%, #000 18%); mask-composite: intersect; }
@@ -336,8 +354,7 @@ __TOKENS__
   footer .brand__badge { height: 42px; width: auto; }
   footer .brand svg { height: 18px; }
   @media (max-width: 767px) { .brand { gap: 8px; } .brand__badge { height: 44px; width: auto; } .brand svg { height: 17px; }
-    /* Phones: the hero's Shop chains button sits right below, so the nav copy makes room for the logo. */
-    .nav .btn--primary { display: none; } }
+ }
 
   /* Mascot badge (shown at <=100px; source preview is 200px) */
   .mascot { height: 100px; width: auto; align-self: flex-start; border-radius: 50%; margin-bottom: 20px; display: block; }
@@ -393,16 +410,29 @@ __TOKENS__
 </div>
 <header class="nav">
   <div class="wrap nav__in">
-    <a class="brand" href="#top" aria-label="Mr. Cuban Link home"><img class="brand__badge" src="__MASCOT__" alt="" width="242" height="256">__WORD__</a>
-    <ul class="nav__links">
-      <li><a href="#closer">The chain</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#fit">Fit</a></li>
-      <li><a href="#care">Care</a></li>
-    </ul>
-    <button class="btn btn--ghost theme-toggle" type="button" id="themeToggle" aria-label="Switch to light mode"><i class="ph ph-sun" aria-hidden="true"></i><span>Light</span></button>
-    <a class="btn btn--primary" href="#shop">Shop chains</a>
+    <div class="nav__side">
+      <button class="nav__icon nav__menu" type="button" aria-label="Open menu">__I_list__</button>
+      <a class="nav__icon" href="/search" aria-label="Search">__I_magnifying-glass__</a>
+    </div>
+    <a class="brand nav__brand" href="#top" aria-label="Mr. Cuban Link home"><img class="brand__badge" src="__MASCOT__" alt="" width="242" height="256">__WORD__</a>
+    <div class="nav__side nav__side--end">
+      <a class="nav__icon" href="/account" aria-label="Account">__I_user__</a>
+      <a class="nav__icon nav__cart" href="/cart" aria-label="Cart, 0 items">__I_handbag__<span class="nav__count">0</span></a>
+    </div>
   </div>
+  <nav class="cats" aria-label="Shop categories">
+    <ul class="wrap cats__list">
+      <li><a href="/collections/all">New in</a></li>
+      <li><a href="/collections/all">Miami Cuban</a></li>
+      <li><a href="/collections/all">Box lock</a></li>
+      <li><a href="/collections/all">Diamond cut</a></li>
+      <li><a href="/collections/all">Figaro</a></li>
+      <li><a href="/collections/all">Bracelets</a></li>
+      <li><a href="/collections/all">ID bracelets</a></li>
+      <li><a href="#fit">Size guide</a></li>
+      <li><a href="/collections/all">Shop all</a></li>
+    </ul>
+  </nav>
 </header>
 
 <main id="top">
@@ -634,7 +664,7 @@ __TOKENS__
         <li><a href="/policies/terms-of-service">Terms</a></li>
       </ul></nav>
     </div>
-    <div class="foot__base"><span>&copy; <span id="yr">2026</span> Mr. Cuban Link</span></div>
+    <div class="foot__base"><span>&copy; <span id="yr">2026</span> Mr. Cuban Link</span><button class="btn btn--ghost theme-toggle" type="button" id="themeToggle" aria-label="Switch to light mode"><i class="ph ph-sun" aria-hidden="true"></i><span>Light</span></button></div>
   </div>
 </footer>
 
