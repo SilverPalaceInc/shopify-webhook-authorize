@@ -100,6 +100,48 @@ __TOKENS__
   @media (max-width: 767px) { .theme-toggle { margin-left: auto; padding: 0 12px; } .nav .btn--primary { margin-left: 0; } }
   @media (max-width: 767px) { .nav__links { display: none; } .nav .btn { margin-left: auto; } }
 
+  /* ---------- Hero stage (dark band, real photography) ---------- */
+  .stage { position: relative; overflow: hidden; background: #0b0c0e; color: #f2f3f5; min-height: min(760px, calc(100dvh - 112px)); display: flex; flex-direction: column; isolation: isolate; }
+  .stage__media { position: absolute; inset: 0 0 52px 34%; z-index: 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 28%), linear-gradient(to top, transparent 0%, #000 18%); -webkit-mask-composite: source-in;
+            mask-image: linear-gradient(to right, transparent 0%, #000 28%), linear-gradient(to top, transparent 0%, #000 18%); mask-composite: intersect; }
+  .stage__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1400ms var(--ease-in-out); }
+  .stage__slide.is-on { opacity: 1; }
+  .stage__slide img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%; transform: scale(1.02); }
+  .stage__slide.is-on img { animation: push 9s linear both; }
+  @keyframes push { from { transform: scale(1.02) translate3d(0,0,0); } to { transform: scale(1.1) translate3d(-1.5%, -1%, 0); } }
+  /* A soft band of light that crosses the silver, the way a lamp catches polished metal. */
+  .stage__sweep { position: absolute; inset: -10%; pointer-events: none; mix-blend-mode: overlay;
+    background: linear-gradient(110deg, transparent 38%, rgba(255,255,255,.0) 42%, rgba(255,255,255,.75) 50%, rgba(255,255,255,0) 58%, transparent 62%);
+    transform: translateX(-80%); animation: sweep 6s var(--ease-in-out) 900ms infinite; }
+  @keyframes sweep { 0% { transform: translateX(-80%); } 45%, 100% { transform: translateX(80%); } }
+  .stage__copy { position: relative; z-index: 1; flex: 1; width: 100%; display: flex; flex-direction: column; justify-content: center; padding-top: 64px; padding-bottom: 64px; }
+  .stage__kicker { font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: #ff6b77; margin: 0 0 18px; }
+  .stage__title { font-family: var(--display); font-weight: 800; font-size: clamp(48px, 7vw, 104px); line-height: .96; letter-spacing: -.035em; margin: 0 0 22px; max-width: 9ch; }
+  .stage__accent { color: #ff4d5e; }
+  .stage__sub { font-size: 18px; line-height: 1.55; color: #c3c8cf; max-width: 38ch; margin: 0 0 32px; }
+  .stage__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .stage__ghost { background: transparent; color: #f2f3f5; border-color: rgba(242,243,245,.35); }
+  @media (hover: hover) and (pointer: fine) { .stage__ghost:hover { border-color: #f2f3f5; } }
+  .stage .w { display: inline-block; animation: wordIn 900ms var(--ease-out) both; animation-delay: calc(var(--i) * 90ms + 150ms); }
+  .stage__title .w { will-change: transform; }
+  @keyframes wordIn { from { opacity: 0; transform: translate3d(0, .45em, 0); } }
+  .stage__ticker { position: relative; z-index: 1; border-top: 1px solid rgba(255,255,255,.1); height: 52px; overflow: hidden; display: flex; align-items: center; }
+  .stage__track { display: flex; gap: 48px; white-space: nowrap; animation: ticker 38s linear infinite; padding-left: 48px; }
+  .stage__track span { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #8d949e; }
+  .stage__track span:nth-child(odd) { color: #c3c8cf; }
+  @keyframes ticker { to { transform: translateX(-50%); } }
+  @media (max-width: 899px) {
+    .stage { min-height: 680px; }
+    .stage__media { inset: 0 0 52px 0; -webkit-mask-image: linear-gradient(to top, transparent 30%, #000 70%); mask-image: linear-gradient(to top, transparent 30%, #000 70%); }
+    .stage__copy { justify-content: flex-end; padding-top: 280px; padding-bottom: 36px; }
+    .stage__sub { font-size: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .stage .w, .stage__slide.is-on img, .stage__sweep, .stage__track { animation: none; }
+    .stage__slide { transition: none; }
+  }
+
   /* ---------- Hero: asymmetric split ---------- */
   .hero { padding: 40px 0 48px; }
   .hero__grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; min-height: min(640px, calc(100dvh - 76px - 88px)); }
@@ -375,21 +417,26 @@ __TOKENS__
 </header>
 
 <main id="top">
-  <!-- Hero -->
-  <section class="hero">
-    <div class="wrap hero__grid">
-      <div>
-        <h1 class="rise" style="--i:0">Italian sterling, made to be <em>worn daily.</em></h1>
-        <p class="rise" style="--i:1">Miami Cuban link chains in 925 sterling silver. Polished flat links, a lobster clasp, and the stamp to prove it.</p>
-        <div class="hero__ctas rise" style="--i:2">
-          <a class="btn btn--primary" href="#shop">Shop chains <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
-          <a class="btn btn--ghost" href="#closer">See it up close</a>
-        </div>
-      </div>
-      <div class="hero__media settle">
-        <video data-speed="0.10" src="__VID__" poster="__IMG__" autoplay muted loop playsinline preload="auto" aria-label="Silver Cuban link chain catching the light"></video>
+  <!-- Hero: real product photography (Shopify catalog), crossfade + slow push-in + light sweep -->
+  <section class="stage" aria-label="Mr. Cuban Link sterling silver">
+    <div class="stage__media" aria-hidden="true">
+      <div class="stage__slide is-on"><img src="__H_greek__" alt="" width="1500" height="1500" fetchpriority="high"></div>
+      <div class="stage__slide"><img src="__H_id125__" alt="" width="1500" height="1500"></div>
+      <div class="stage__sweep"></div>
+    </div>
+    <div class="wrap stage__copy">
+      <p class="stage__kicker w" style="--i:0">925 sterling silver</p>
+      <h1 class="stage__title"><span class="w" style="--i:1">Built</span> <span class="w" style="--i:2">heavy.</span><br><span class="w" style="--i:3">Worn</span> <span class="w stage__accent" style="--i:4">daily.</span></h1>
+      <p class="stage__sub w" style="--i:5">Miami Cuban chains and ID bracelets in 925 sterling silver, made to be worn every day.</p>
+      <div class="stage__ctas w" style="--i:6">
+        <a class="btn btn--primary" href="#shop-best">Shop best sellers <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
+        <a class="btn stage__ghost" href="#styles">Shop by style</a>
       </div>
     </div>
+    <div class="stage__ticker" aria-hidden="true"><div class="stage__track">
+      <span>Miami Cuban</span><span>Box lock</span><span>Diamond cut</span><span>ID bracelets</span><span>Figaro</span><span>925 sterling silver</span><span>Italian-made chains</span>
+      <span>Miami Cuban</span><span>Box lock</span><span>Diamond cut</span><span>ID bracelets</span><span>Figaro</span><span>925 sterling silver</span><span>Italian-made chains</span>
+    </div></div>
   </section>
 
   <!-- Proof row: plain facts, no logos we do not have -->
@@ -658,6 +705,18 @@ __TOKENS__
     entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Hero stage: crossfade real photos every 6s (paused when the tab is hidden or motion is reduced).
+  const slides = [...document.querySelectorAll('.stage__slide')];
+  if (!reduce && slides.length > 1) {
+    let cur = 0;
+    setInterval(() => {
+      if (document.hidden) return;
+      slides[cur].classList.remove('is-on');
+      cur = (cur + 1) % slides.length;
+      slides[cur].classList.add('is-on');
+    }, 6000);
+  }
 
   // Hero video: respect reduced motion.
   const vid = document.querySelector('.hero__media video');
