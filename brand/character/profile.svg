@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+<rect width="400" height="400" fill="#f7f7f8"/>
+<!-- torso -->
+<path d="M60,400 C70,340 110,312 172,298 L246,296 C292,304 330,336 342,400 Z" fill="#141518"/>
+<!-- head + neck in profile, facing right -->
+<path d="M172,304 C160,282 150,256 148,226 C146,184 164,146 204,138 C232,132 258,142 266,166
+         L270,184 L286,206 C288,210 286,213 282,213 L270,214 C272,218 274,222 272,226
+         C270,230 270,234 272,238 C272,248 262,256 248,258 C244,262 244,280 248,300 Z" fill="#141518"/>
+<!-- ear -->
+<path d="M190,186 C202,184 208,194 206,206 C204,218 194,220 188,214" fill="none" stroke="#f7f7f8" stroke-width="3" opacity=".3"/>
+<!-- fitted cap: crown + long brim forward -->
+<path d="M146,182 C142,128 176,96 220,98 C252,100 270,122 270,156 L150,170 Z" fill="#141518" stroke="#f7f7f8" stroke-width="3.5"/>
+<path d="M232,150 C262,146 300,148 326,160 C330,162 329,167 324,167 C296,164 262,166 236,170 Z" fill="#141518" stroke="#f7f7f8" stroke-width="3.5"/>
+<path d="M214,100 C206,124 204,146 206,166" fill="none" stroke="#f7f7f8" stroke-width="2.4" opacity=".35"/>
+<!-- wraparound shades -->
+<path d="M226,176 L276,180 C278,181 278,184 277,186 L272,198 C270,202 266,204 262,203 L236,198 C230,197 226,192 226,186 Z" fill="#d9dde3"/>
+<path d="M226,180 L188,182" stroke="#d9dde3" stroke-width="4" stroke-linecap="round"/>
+<path d="M240,184 L262,186" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+<rect x="-6.5" y="-9.5" width="13" height="19" rx="4" fill="#d9dde3" stroke="#141518" stroke-width="1.6" transform="translate(176.00 302.00) rotate(98.86) skewX(-22)"/><rect x="-6.5" y="-9.5" width="13" height="19" rx="4" fill="#d9dde3" stroke="#141518" stroke-width="1.6" transform="translate(175.86 313.69) rotate(81.26) skewX(-22)"/><rect x="-6.5" y="-9.5" width="13" height="19" rx="4" fill="#d9dde3" stroke="#141518" stroke-width="1.6" transform="translate(179.82 324.66) rotate(58.83) skewX(-22)"/><rect x="-6.5" y="-9.5" width="13" height="19" rx="4" fill="#d9dde3" stroke="#141518" stroke-width="1.6" transform="translate(187.52 333.44) rotate(39.72) skewX(-22)"/><rect x="-6.5" y="-9.5" width="13" height="19" rx="4" fill="#d9dde3" stroke="#141518" stroke-width="1.6" transform="translate(197.37 339.79) rotate(26.93) skewX(-22)"/><rect x="-6.5" y="-9.5" width="13" height="19" rx="4" fill="#d9dde3" stroke="#141518" stroke-width="1.6" transform="translate(208.19 344.31) rotate(18.89) skewX(-22)"/><rect x="-6.5" y="-9.5" width="13" height="19" rx="4" fill="#c0182f" stroke="#141518" stroke-width="1.6" transform="translate(219.48 347.53) rotate(13.33) skewX(-22)"/><rect x="-6.5" y="-9.5" width="13" height="19" rx="4" fill="#d9dde3" stroke="#141518" stroke-width="1.6" transform="translate(230.98 349.83) rotate(9.47) skewX(-22)"/><rect x="-6.5" y="-9.5" width="13" height="19" rx="4" fill="#d9dde3" stroke="#141518" stroke-width="1.6" transform="translate(240.98 344.27) rotate(-43.27) skewX(-22)"/><rect x="-6.5" y="-9.5" width="13" height="19" rx="4" fill="#d9dde3" stroke="#141518" stroke-width="1.6" transform="translate(247.63 334.69) rotate(-66.25) skewX(-22)"/><rect x="-6.5" y="-9.5" width="13" height="19" rx="4" fill="#d9dde3" stroke="#141518" stroke-width="1.6" transform="translate(250.66 323.39) rotate(-82.38) skewX(-22)"/><rect x="-6.5" y="-9.5" width="13" height="19" rx="4" fill="#d9dde3" stroke="#141518" stroke-width="1.6" transform="translate(251.14 311.68) rotate(-92.25) skewX(-22)"/><rect x="-6.5" y="-9.5" width="13" height="19" rx="4" fill="#d9dde3" stroke="#141518" stroke-width="1.6" transform="translate(250.00 300.00) rotate(-98.49) skewX(-22)"/>
+</svg>
