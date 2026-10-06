@@ -275,16 +275,16 @@ __TOKENS__
 
   /* Logo lockup: mascot badge + live wordmark (crisp at any size, follows the theme colour). */
   .brand { gap: 12px; }
-  .brand__badge { width: 56px; height: 56px; border-radius: 50%; display: block; flex: none; }
+  .brand__badge { height: 58px; width: auto; border-radius: 50%; display: block; flex: none; }
   .brand svg { height: 26px; width: auto; display: block; color: var(--ink); }
-  footer .brand__badge { width: 40px; height: 40px; }
+  footer .brand__badge { height: 42px; width: auto; }
   footer .brand svg { height: 18px; }
-  @media (max-width: 767px) { .brand { gap: 8px; } .brand__badge { width: 42px; height: 42px; } .brand svg { height: 17px; }
+  @media (max-width: 767px) { .brand { gap: 8px; } .brand__badge { height: 44px; width: auto; } .brand svg { height: 17px; }
     /* Phones: the hero's Shop chains button sits right below, so the nav copy makes room for the logo. */
     .nav .btn--primary { display: none; } }
 
   /* Mascot badge (shown at <=100px; source preview is 200px) */
-  .mascot { width: 96px; height: 96px; border-radius: 50%; margin-bottom: 20px; display: block; }
+  .mascot { height: 100px; width: auto; align-self: flex-start; border-radius: 50%; margin-bottom: 20px; display: block; }
   .mascot--sm { width: 44px; height: 44px; margin: 0; }
   .foot__brand { display: flex; align-items: center; gap: 12px; }
 
@@ -319,7 +319,7 @@ __TOKENS__
 
 <header class="nav">
   <div class="wrap nav__in">
-    <a class="brand" href="#top" aria-label="Mr. Cuban Link home"><img class="brand__badge" src="__MASCOT__" alt="" width="48" height="48">__WORD__</a>
+    <a class="brand" href="#top" aria-label="Mr. Cuban Link home"><img class="brand__badge" src="__MASCOT__" alt="" width="242" height="256">__WORD__</a>
     <ul class="nav__links">
       <li><a href="#closer">The chain</a></li>
       <li><a href="#details">Details</a></li>
@@ -477,7 +477,7 @@ __TOKENS__
     <div class="wrap">
       <div class="close reveal">
         <div class="close__copy">
-          <img class="mascot" src="__MASCOT__" alt="Mr. Cuban Link mascot: a bearded man in a cap, sunglasses and a silver Cuban link chain" width="96" height="96" loading="lazy">
+          <img class="mascot" src="__MASCOT__" alt="Mr. Cuban Link mascot: a bearded man in a cap, sunglasses and a silver Cuban link chain" width="242" height="256" loading="lazy">
           <h2 class="h2">Find your chain.</h2>
           <p class="lede">Browse every width and length in the shop, or get an email when new pieces land.</p>
           <div style="margin-top:28px"><a class="btn btn--primary" href="/collections/all">Shop chains <i class="ph ph-arrow-right" aria-hidden="true"></i></a></div>
@@ -498,7 +498,7 @@ __TOKENS__
 
 <footer>
   <div class="wrap foot">
-    <div class="foot__brand"><a class="brand" href="#top" aria-label="Mr. Cuban Link home"><img class="brand__badge" src="__MASCOT__" alt="" width="48" height="48">__WORD__</a></div>
+    <div class="foot__brand"><a class="brand" href="#top" aria-label="Mr. Cuban Link home"><img class="brand__badge" src="__MASCOT__" alt="" width="242" height="256">__WORD__</a></div>
     <ul>
       <li><a href="#fit">Sizing</a></li>
       <li><a href="#care">Care</a></li>
