@@ -107,14 +107,9 @@ __TOKENS__
             mask-image: linear-gradient(to right, transparent 0%, #000 28%), linear-gradient(to top, transparent 0%, #000 18%); mask-composite: intersect; }
   .stage__slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1400ms var(--ease-in-out); }
   .stage__slide.is-on { opacity: 1; }
-  .stage__slide img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 52%; transform: scale(1.02); }
+  .stage__slide img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; transform: scale(1.01); }
   .stage__slide.is-on img { animation: push 9s linear both; }
-  @keyframes push { from { transform: scale(1.02) translate3d(0,0,0); } to { transform: scale(1.1) translate3d(-1.5%, -1%, 0); } }
-  /* A soft band of light that crosses the silver, the way a lamp catches polished metal. */
-  .stage__sweep { position: absolute; inset: -10%; pointer-events: none; mix-blend-mode: overlay;
-    background: linear-gradient(110deg, transparent 38%, rgba(255,255,255,.0) 42%, rgba(255,255,255,.75) 50%, rgba(255,255,255,0) 58%, transparent 62%);
-    transform: translateX(-80%); animation: sweep 6s var(--ease-in-out) 900ms infinite; }
-  @keyframes sweep { 0% { transform: translateX(-80%); } 45%, 100% { transform: translateX(80%); } }
+  @keyframes push { from { transform: scale(1.01); } to { transform: scale(1.05); } }
   .stage__copy { position: relative; z-index: 1; flex: 1; width: 100%; display: flex; flex-direction: column; justify-content: center; padding-top: 64px; padding-bottom: 64px; }
   .stage__title { font-family: var(--display); font-weight: 800; font-size: clamp(48px, 7vw, 104px); line-height: .96; letter-spacing: -.035em; margin: 0 0 22px; max-width: 9ch; }
   .stage__accent { color: #ff4d5e; }
@@ -132,7 +127,7 @@ __TOKENS__
     .stage__sub { font-size: 16px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .stage .w, .stage__slide.is-on img, .stage__sweep { animation: none; }
+    .stage .w, .stage__slide.is-on img { animation: none; }
     .stage__slide { transition: none; }
   }
 
@@ -411,15 +406,14 @@ __TOKENS__
 </header>
 
 <main id="top">
-  <!-- Hero: real product photography (Shopify catalog), crossfade + slow push-in + light sweep -->
+  <!-- Hero: real lifestyle photography (Pexels, free license; replace with own shoot / licensed 10mm shot), crossfade + slow push-in -->
   <section class="stage" aria-label="Mr. Cuban Link sterling silver">
     <div class="stage__media" aria-hidden="true">
-      <div class="stage__slide is-on"><img src="__H_greek__" alt="" width="1500" height="1500" fetchpriority="high"></div>
-      <div class="stage__slide"><img src="__H_id125__" alt="" width="1500" height="1500"></div>
-      <div class="stage__sweep"></div>
+      <div class="stage__slide is-on"><img src="__H_m1__" alt="" width="1400" height="1575" fetchpriority="high"></div>
+      <div class="stage__slide"><img src="__H_m2__" alt="" width="1400" height="1575"></div>
     </div>
     <div class="wrap stage__copy">
-      <h1 class="stage__title"><span class="w" style="--i:1">Built</span> <span class="w" style="--i:2">heavy.</span><br><span class="w" style="--i:3">Worn</span> <span class="w stage__accent" style="--i:4">daily.</span></h1>
+      <h1 class="stage__title"><span class="w" style="--i:1">Real</span> <span class="w" style="--i:2">sterling.</span><br><span class="w" style="--i:3">Worn</span> <span class="w stage__accent" style="--i:4">daily.</span></h1>
       <p class="stage__sub w" style="--i:5">Miami Cuban chains and ID bracelets in 925 sterling silver, made to be worn every day.</p>
       <div class="stage__ctas w" style="--i:6">
         <a class="btn btn--primary" href="#shop-best">Shop best sellers <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
