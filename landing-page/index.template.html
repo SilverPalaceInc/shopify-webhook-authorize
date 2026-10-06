@@ -101,8 +101,8 @@ __TOKENS__
   @media (max-width: 767px) { .nav__links { display: none; } .nav .btn { margin-left: auto; } }
 
   /* ---------- Hero: asymmetric split ---------- */
-  .hero { padding: 56px 0 72px; }
-  .hero__grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; min-height: calc(100dvh - 76px - 128px); }
+  .hero { padding: 40px 0 48px; }
+  .hero__grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; min-height: min(640px, calc(100dvh - 76px - 88px)); }
   .hero h1, .h2, .cell h3, .fit__num, .fit__where, .brand, summary { font-family: var(--display); }
   .hero h1 {
     font-size: clamp(40px, 4.6vw, 64px);
@@ -138,8 +138,8 @@ __TOKENS__
 
   /* ---------- Section rhythm ---------- */
   section { scroll-margin-top: 88px; }
-  .sec { padding: 120px 0; }
-  @media (max-width: 767px) { .sec { padding: 80px 0; } }
+  .sec { padding: 88px 0; }
+  @media (max-width: 767px) { .sec { padding: 64px 0; } }
   .h2 { font-size: clamp(32px, 3.8vw, 52px); line-height: 1.04; letter-spacing: -0.025em; font-weight: 800; margin: 0 0 16px; max-width: 18ch; }
   .lede { font-size: 18px; color: var(--ink-2); max-width: 52ch; margin: 0; }
   .eyebrow { font-family: var(--text); font-weight: 700; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 18px; }
@@ -148,6 +148,30 @@ __TOKENS__
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); transition-delay: calc(var(--i, 0) * 60ms); }
   .reveal.in { opacity: 1; transform: none; }
   .no-js .reveal { opacity: 1; transform: none; }
+
+  /* ---------- Best sellers: real catalog items ---------- */
+  .shelf__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+  .shelf__head .h2 { margin: 0; }
+  .textlink { color: var(--ink); font-weight: 500; text-decoration: none; white-space: nowrap; border-bottom: 1.5px solid var(--accent); padding-bottom: 2px; }
+  .products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .product { text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+  .product__img { aspect-ratio: 1; border-radius: var(--r-card); overflow: hidden; background: var(--plate); border: 1px solid var(--line); }
+  .product__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 500ms var(--ease-out); }
+  @media (hover: hover) and (pointer: fine) { .product:hover .product__img img { transform: scale(1.04); } }
+  .product h3 { font-family: var(--text); font-size: 16px; font-weight: 700; margin: 14px 0 2px; letter-spacing: -0.005em; }
+  .product p { margin: 0; color: var(--ink-3); font-size: 14px; }
+  .product .opts { margin-top: 10px; font-size: 14px; font-weight: 500; color: var(--accent); }
+  @media (max-width: 899px) { .products { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
+
+  /* ---------- Shop by style: category tiles ---------- */
+  .styles { display: grid; grid-template-columns: 1.4fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; }
+  .style { position: relative; border-radius: var(--r-card); overflow: hidden; background: var(--plate); min-height: 220px; text-decoration: none; color: #fff; display: flex; align-items: flex-end; }
+  .style:first-child { grid-row: span 2; }
+  .style img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease-out); }
+  .style::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,16,18,.78) 0%, rgba(15,16,18,0) 55%); }
+  .style span { position: relative; z-index: 1; padding: 22px 24px; font-family: var(--display); font-weight: 800; font-size: 24px; letter-spacing: -0.015em; display: flex; align-items: center; gap: 10px; }
+  @media (hover: hover) and (pointer: fine) { .style:hover img { transform: scale(1.05); } }
+  @media (max-width: 899px) { .styles { grid-template-columns: 1fr 1fr; grid-template-rows: auto; } .style:first-child { grid-column: span 2; grid-row: auto; min-height: 260px; } .style { min-height: 180px; } .style span { font-size: 19px; padding: 16px 18px; } }
 
   /* ---------- Look closer: full-width inspectable photo ---------- */
   .closer__head { margin-bottom: 40px; }
@@ -290,11 +314,22 @@ __TOKENS__
   .foot__brand { display: flex; align-items: center; gap: 12px; }
 
   /* ---------- Footer ---------- */
-  footer { padding: 56px 0 48px; color: var(--ink-3); font-size: 14px; }
-  .foot { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 32px; }
-  .foot ul { display: flex; gap: 24px; list-style: none; padding: 0; margin: 0; }
-  .foot a { text-decoration: none; }
-  .foot a:hover { color: var(--ink); }
+  footer { padding: 56px 0 40px; color: var(--ink-2); font-size: 14px; border-top: 1px solid var(--line); background: var(--surface); }
+  .foot__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 40px; }
+  .foot__about p { margin: 16px 0 0; max-width: 32ch; color: var(--ink-3); }
+  .foot__h { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); margin: 0 0 14px; }
+  footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  footer a { text-decoration: none; color: inherit; }
+  footer a:hover { color: var(--ink); }
+  .foot__base { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); color: var(--ink-3); font-size: 13px; }
+  @media (max-width: 767px) { .foot__grid { grid-template-columns: 1fr 1fr; gap: 28px; } .foot__about { grid-column: span 2; } }
+
+  /* Announcement bar */
+  .announce { background: var(--ink); color: var(--bg); font-size: 13px; font-weight: 500; }
+  .announce__in { min-height: 36px; display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; text-align: center; padding-top: 6px; padding-bottom: 6px; }
+  .announce a { color: inherit; text-underline-offset: 3px; }
+  .announce__sep { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
+  @media (max-width: 599px) { .announce__in span:not(:first-child), .announce__sep { display: none; } .announce__in { gap: 10px; } }
 
   /* Lenis smooth scroll (official base styles) */
   html.lenis, html.lenis body { height: auto; }
@@ -318,6 +353,13 @@ __TOKENS__
 <body class="no-js">
 <script>document.body.classList.remove('no-js');</script>
 
+<div class="announce" role="region" aria-label="Store highlights">
+  <div class="wrap announce__in">
+    <span>925 sterling silver</span><span class="announce__sep" aria-hidden="true"></span>
+    <span>Italian-made chains</span><span class="announce__sep" aria-hidden="true"></span>
+    <a href="/collections/all">Shop the Miami Cuban collection</a>
+  </div>
+</div>
 <header class="nav">
   <div class="wrap nav__in">
     <a class="brand" href="#top" aria-label="Mr. Cuban Link home"><img class="brand__badge" src="__MASCOT__" alt="" width="242" height="256">__WORD__</a>
@@ -360,6 +402,64 @@ __TOKENS__
     </div>
   </div>
 
+  <!-- Best sellers: real catalog photos. Names/specs from the Shopify catalog; retail prices to be added. -->
+  <section class="sec" id="shop-best" style="padding-bottom:0">
+    <div class="wrap">
+      <div class="shelf__head reveal">
+        <h2 class="h2">Best sellers.</h2>
+        <a class="textlink" href="/collections/all">Shop all</a>
+      </div>
+      <div class="products">
+          <a class="product reveal" style="--i:0" href="/collections/all">
+            <div class="product__img"><img src="__P_miami__" alt="Miami Cuban Chain" width="640" height="640" loading="lazy"></div>
+            <h3>Miami Cuban Chain</h3><p>Chain or bracelet, 925 sterling</p><span class="opts">View options</span>
+          </a>
+          <a class="product reveal" style="--i:1" href="/collections/all">
+            <div class="product__img"><img src="__P_boxlock__" alt="Miami Cuban Box Lock" width="640" height="640" loading="lazy"></div>
+            <h3>Miami Cuban Box Lock</h3><p>Box lock clasp, 925 sterling</p><span class="opts">View options</span>
+          </a>
+          <a class="product reveal" style="--i:2" href="/collections/all">
+            <div class="product__img"><img src="__P_dollar__" alt="Dollar Cuban, Diamond Cut" width="640" height="640" loading="lazy"></div>
+            <h3>Dollar Cuban, Diamond Cut</h3><p>Diamond-cut links, 925 sterling</p><span class="opts">View options</span>
+          </a>
+          <a class="product reveal" style="--i:3" href="/collections/all">
+            <div class="product__img"><img src="__P_figaro__" alt="Figaro Cuban Chain" width="640" height="640" loading="lazy"></div>
+            <h3>Figaro Cuban Chain</h3><p>925 sterling</p><span class="opts">View options</span>
+          </a>
+          <a class="product reveal" style="--i:0" href="/collections/all">
+            <div class="product__img"><img src="__P_light__" alt="Lightweight Miami Cuban" width="640" height="640" loading="lazy"></div>
+            <h3>Lightweight Miami Cuban</h3><p>Box lock clasp, 925 sterling</p><span class="opts">View options</span>
+          </a>
+          <a class="product reveal" style="--i:1" href="/collections/all">
+            <div class="product__img"><img src="__P_idbr8__" alt="Miami Cuban ID Bracelet" width="640" height="640" loading="lazy"></div>
+            <h3>Miami Cuban ID Bracelet</h3><p>8mm, rhodium plated</p><span class="opts">View options</span>
+          </a>
+          <a class="product reveal" style="--i:2" href="/collections/all">
+            <div class="product__img"><img src="__P_greek__" alt="Greek Key ID Bracelet" width="640" height="640" loading="lazy"></div>
+            <h3>Greek Key ID Bracelet</h3><p>10.5mm, 925 sterling</p><span class="opts">View options</span>
+          </a>
+          <a class="product reveal" style="--i:3" href="/collections/all">
+            <div class="product__img"><img src="__P_id125__" alt="Cuban ID Bracelet" width="640" height="640" loading="lazy"></div>
+            <h3>Cuban ID Bracelet</h3><p>12.5mm, 925 sterling</p><span class="opts">View options</span>
+          </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop by style -->
+  <section class="sec" id="styles" style="padding-bottom:0">
+    <div class="wrap">
+      <h2 class="h2 reveal" style="margin-bottom:28px">Shop by style.</h2>
+      <div class="styles">
+        <a class="style reveal" href="/collections/all"><img src="__P_miami__" alt="" loading="lazy"><span>Miami Cuban chains <i class="ph ph-arrow-right" aria-hidden="true"></i></span></a>
+        <a class="style reveal" style="--i:1" href="/collections/all"><img src="__P_boxlock__" alt="" loading="lazy"><span>Box lock</span></a>
+        <a class="style reveal" style="--i:2" href="/collections/all"><img src="__P_dollar__" alt="" loading="lazy"><span>Diamond cut</span></a>
+        <a class="style reveal" style="--i:3" href="/collections/all"><img src="__P_greek__" alt="" loading="lazy"><span>ID bracelets</span></a>
+        <a class="style reveal" style="--i:4" href="/collections/all"><img src="__P_figaro__" alt="" loading="lazy"><span>Figaro</span></a>
+      </div>
+    </div>
+  </section>
+
   <!-- Look closer: full-bleed inspectable photo -->
   <section class="sec" id="closer">
     <div class="wrap">
@@ -371,23 +471,6 @@ __TOKENS__
         <img src="__IMG__" alt="Close view of a 925 sterling silver Miami Cuban link chain with its lobster clasp and 925 Italy stamp" width="1200" height="1200" loading="lazy">
       </div>
       <p class="closer__hint"><i class="ph ph-magnifying-glass-plus" aria-hidden="true"></i><span class="when-mouse">Move your cursor over the photo to inspect the links.</span><span class="when-touch">Pinch the photo to inspect the links.</span></p>
-    </div>
-  </section>
-
-  <!-- Story: text stays pinned while photos scroll past. Photos are PLACEHOLDER stock (Picsum, grayscale); replace with real lifestyle shots. -->
-  <section class="sec" id="story" style="padding-top:0">
-    <div class="wrap story">
-      <div class="story__text reveal">
-        <h2 class="h2">Built to be worn, not kept in a box.</h2>
-        <p class="lede">Out on the street, at work, under a hoodie. A Cuban link holds its shape and its shine through all of it.</p>
-        <a class="btn btn--primary" href="#shop">Shop chains <i class="ph ph-arrow-right" aria-hidden="true"></i></a>
-      </div>
-      <div class="story__photos">
-        <figure class="story__photo reveal" style="margin:0"><img data-speed="0.12" src="__S1__" alt="Placeholder lifestyle photo" loading="lazy"></figure>
-        <figure class="story__photo reveal" style="margin:0"><img data-speed="0.12" src="__S2__" alt="Placeholder lifestyle photo" loading="lazy"></figure>
-        <figure class="story__photo reveal" style="margin:0"><img data-speed="0.12" src="__S3__" alt="Placeholder lifestyle photo" loading="lazy"></figure>
-        <figure class="story__photo reveal" style="margin:0"><img data-speed="0.12" src="__S4__" alt="Placeholder lifestyle photo" loading="lazy"></figure>
-      </div>
     </div>
   </section>
 
@@ -498,14 +581,31 @@ __TOKENS__
 </main>
 
 <footer>
-  <div class="wrap foot">
-    <div class="foot__brand"><a class="brand" href="#top" aria-label="Mr. Cuban Link home"><img class="brand__badge" src="__MASCOT__" alt="" width="242" height="256">__WORD__</a></div>
-    <ul>
-      <li><a href="#fit">Sizing</a></li>
-      <li><a href="#care">Care</a></li>
-      <li><a href="/pages/contact">Contact</a></li>
-    </ul>
-    <span>&copy; <span id="yr">2026</span> Mr. Cuban Link</span>
+  <div class="wrap">
+    <div class="foot__grid">
+      <div class="foot__about">
+        <a class="brand" href="#top" aria-label="Mr. Cuban Link home"><img class="brand__badge" src="__MASCOT__" alt="" width="242" height="256">__WORD__</a>
+        <p>Miami Cuban links and men's chains in 925 sterling silver.</p>
+      </div>
+      <nav aria-label="Shop"><p class="foot__h">Shop</p><ul>
+        <li><a href="/collections/all">Miami Cuban chains</a></li>
+        <li><a href="/collections/all">Box lock chains</a></li>
+        <li><a href="/collections/all">ID bracelets</a></li>
+        <li><a href="/collections/all">Shop all</a></li>
+      </ul></nav>
+      <nav aria-label="Help"><p class="foot__h">Help</p><ul>
+        <li><a href="#fit">Size guide</a></li>
+        <li><a href="#care">Care and FAQ</a></li>
+        <li><a href="/policies/shipping-policy">Shipping</a></li>
+        <li><a href="/policies/refund-policy">Returns</a></li>
+      </ul></nav>
+      <nav aria-label="Company"><p class="foot__h">Company</p><ul>
+        <li><a href="/pages/contact">Contact</a></li>
+        <li><a href="/policies/privacy-policy">Privacy</a></li>
+        <li><a href="/policies/terms-of-service">Terms</a></li>
+      </ul></nav>
+    </div>
+    <div class="foot__base"><span>&copy; <span id="yr">2026</span> Mr. Cuban Link</span></div>
   </div>
 </footer>
 
